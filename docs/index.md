@@ -19,6 +19,6 @@ d'informatique de diverses MP2I.
 * un TP en `ocaml` sur l'[algorithme de
   Dijkstra](JC/TD21_DijkstraOCaml.pdf) (fichiers annexes:
   [td21_dijkstra.ml](JC/td21_dijkstra.ml) /
-  [liaisons.txt](liaisons.txt) / [villes.txt](villes.txt))
+  [liaisons.txt](JC/liaisons.txt) / [villes.txt](JC/villes.txt))
   
 * un TD d'[algorithmique](JC/23_Fiche_ExoAlgo3.pdf)
