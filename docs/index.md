@@ -16,3 +16,9 @@ d'informatique de diverses MP2I.
 * un TP en `C` sur [les
   fichiers](https://ineskkk.github.io/mp2i-pv/TPC/TP22/tp22.html)
 
+* un TP en `ocaml` sur l'[algorithme de
+  Dijkstra](JC/TD21_DijkstraOCaml.pdf) (fichiers annexes:
+  [td21_dijkstra.ml](JC/td21_dijkstra.ml) /
+  [liaisons.txt](liaisons.txt) / [villes.txt](villes.txt))
+  
+* un TD d'[algorithmique](JC/23_Fiche_ExoAlgo3.pdf)
