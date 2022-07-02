@@ -1,4 +1,4 @@
-## Cahier de vacances ...vers la MPI(*)
+## Cahier de vacances ... vers la MPI(*) - été 2022
 
 Cette liste d'énoncés est proposée par plusieurs enseignants
 d'informatique de diverses MP2I.
@@ -22,3 +22,13 @@ d'informatique de diverses MP2I.
   [liaisons.txt](JC/liaisons.txt) / [villes.txt](JC/villes.txt))
   
 * un TD d'[algorithmique](JC/23_Fiche_ExoAlgo3.pdf)
+
+### MP2I du Lycée Kléber
+
+#### Colles
+Tous les sujets de colles (30 semaines) sont [dans ce dossier](Kleber/colles).
+Ces colles sont plutôt axées programmation que preuve ou conception/étude d'algorithmes.
+Il y a de plus en plus de questions théoriques au fur et à mesure.
+
+#### Travaux pratiques
+Presque tous les sujets de TP sont [dans ce dossier](Kleber/Travaux_Pratiques).
