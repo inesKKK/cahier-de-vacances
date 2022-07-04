@@ -27,7 +27,7 @@ d'informatique de diverses MP2I.
 * un TD présentant un algorithme de [recherche de deux points les plus proches](Faidherbe/points_les_plus_proches.pdf) à l'aide de la méthode diviser pour régner (en C).
 * un TP OCaml sur les [arbres équilibrés 123](Faidherbe/14.Arbres23.pdf).
 * un TP OCaml sur les [graphes orientés et l'ordonnancement](Faidherbe/graphes_oreintes_ordonnancement.pdf)
-* Un TP C sur les [parcours de graphes](Faidherbe/graphes\ en\ C.pdf) et une représentation des grands entiers.
+
 * Un [DS](Faidherbe/DS6-Faidherbe.pdf) composé de différents exercices autour de la logique et de l'algorithmique du texte.
 
 ### MP2I du Lycée Kléber
