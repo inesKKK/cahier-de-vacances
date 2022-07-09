@@ -39,3 +39,16 @@ Il y a de plus en plus de questions théoriques au fur et à mesure.
 
 #### Travaux pratiques
 Presque tous les sujets de TP sont [dans ce dossier](Kleber/Travaux_Pratiques).
+
+
+### MP2I du Lycée du Parc
+
+Un [très gros fichier](jbb/poly-mp2i.pdf) contenant le cours et les sujets de TP. Vous y trouverez également
+la majorité des corrigés. Quelques exemples de TP qui peuvent être intéressants :
+
+* celui sur le tri radix (en C), vous trouverez le squelette [ici](jbb/radix/squelette.c) ;
+* celui sur les anagrammes (en OCaml), vous trouverez les différents fichiers [ici](jbb/anagrammes) ;
+* celui sur le *seam carving* (en C, dû à Mickaël Péchaud et François Fayard), les fichiers sont [là](jbb/seam-carving) ;
+* celui sur les graphes eulériens (en C), [ici](jbb/graphes-euleriens) ;
+* celui sur l'algorithme de Quine (en OCaml), [ici](jbb/quine) (les graphes donnés en exemple peuvent aussi servir pour le 
+TP sur DPLL).
