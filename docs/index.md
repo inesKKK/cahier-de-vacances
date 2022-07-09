@@ -47,8 +47,8 @@ Un [très gros fichier](jbb/poly-mp2i.pdf) contenant le cours et les sujets de T
 la majorité des corrigés. Quelques exemples de TP qui peuvent être intéressants :
 
 * celui sur le tri radix (en C), vous trouverez le squelette [ici](jbb/radix/squelette.c) ;
-* celui sur les anagrammes (en OCaml), vous trouverez les différents fichiers [ici](jbb/anagrammes) ;
-* celui sur le *seam carving* (en C, dû à Mickaël Péchaud et François Fayard), les fichiers sont [là](jbb/seam-carving) ;
-* celui sur les graphes eulériens (en C), [ici](jbb/graphes-euleriens) ;
-* celui sur l'algorithme de Quine (en OCaml), [ici](jbb/quine) (les graphes donnés en exemple peuvent aussi servir pour le 
+* celui sur les anagrammes (en OCaml), vous trouverez les différents fichiers [ici](jbb/anagrammes/squelette.zip) ;
+* celui sur le *seam carving* (en C, dû à Mickaël Péchaud et François Fayard), les fichiers sont [là](jbb/seam-carving/squelette.zip) ;
+* celui sur les graphes eulériens (en C), [ici](jbb/graphes-euleriens/squelette.zip) ;
+* celui sur l'algorithme de Quine (en OCaml), [ici](jbb/quine/squelette.zip) (les graphes donnés en exemple peuvent aussi servir pour le 
 TP sur DPLL).
