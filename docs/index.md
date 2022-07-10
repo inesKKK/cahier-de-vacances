@@ -52,3 +52,12 @@ la majorité des corrigés. Quelques exemples de TP qui peuvent être intéressa
 * celui sur les graphes eulériens (en C), [ici](jbb/graphes-euleriens/squelette.zip) ;
 * celui sur l'algorithme de Quine (en OCaml), [ici](jbb/quine/squelette.zip) (les graphes donnés en exemple peuvent aussi servir pour le 
 TP sur DPLL).
+
+### MP2I Fénelon Sainte-Marie
+
+[Site avec cours, TD, TP, DS](https://mp2i-fsm.github.io)
+
+Par exemple :
+- [DS sur la complexité et dichotomie](qf/ds1.pdf) ([corrigé](qf/ds1_cor.pdf))
+- [DS sur les types OCaml, pile, dictionnaire](qf/ds2.pdf) ([corrigé](qf/ds2_cor.pdf))
+- [TD sur les parcours de graphe](qf/td_graphes2.pdf) ([corrigé](qf/td_graphes2_cor.pdf))
