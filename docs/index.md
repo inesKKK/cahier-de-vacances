@@ -4,7 +4,7 @@ Cette liste d'énoncés est proposée par plusieurs enseignants
 d'informatique de diverses MP2I.
 
 
-* Un TP OCaml permettant de dessiner des arbres binaires et d'observer des rotations. [dessin](https://github.com/inesKKK/cahier-de-vacances/blob/master/docs/Faidherbe/11_dessin_arbres.pdf)
+
 
 * un TP en `C` sur les tableaux [![badge_logo.svg](badge_logo.svg)](https://mybinder.org/v2/gh/inesKKK/mp2i-pv-binder/main?urlpath=git-pull%3Frepo%3Dhttps%253A%252F%252Fgithub.com%252FinesKKK%252Fmp2i-pv%26urlpath%3Dtree%252Fmp2i-pv%252Fdocs%252FTP%252FTP6.ipynb%26branch%3Dmain)
 
@@ -23,9 +23,16 @@ d'informatique de diverses MP2I.
   [td21_dijkstra.ml](JC/td21_dijkstra.ml) /
   [liaisons.txt](JC/liaisons.txt) / [villes.txt](JC/villes.txt))
   
-* un TD d'[algorithmique](JC/23_Fiche_ExoAlgo3.pdf)
+  * un TD d'[algorithmique](JC/23_Fiche_ExoAlgo3.pdf)
+  
+### MP2I du Lycée Faidherbe
+
+* Un TP OCaml permettant de dessiner des arbres binaires et d'observer des rotations. [dessin](https://github.com/inesKKK/cahier-de-vacances/blob/master/docs/Faidherbe/11_dessin_arbres.pdf)
+
 * un TD présentant un algorithme de [recherche de deux points les plus proches](Faidherbe/points_les_plus_proches.pdf) à l'aide de la méthode diviser pour régner (en C).
+
 * un TP OCaml sur les [arbres équilibrés 123](Faidherbe/14.Arbres23.pdf).
+
 * un TP OCaml sur les [graphes orientés et l'ordonnancement](Faidherbe/graphes_oreintes_ordonnancement.pdf)
 
 * Un [DS](Faidherbe/DS6-Faidherbe.pdf) composé de différents exercices autour de la logique et de l'algorithmique du texte.
