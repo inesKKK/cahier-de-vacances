@@ -68,3 +68,15 @@ Par exemple :
 - [DS sur la complexité et dichotomie](qf/ds1.pdf) ([corrigé](qf/ds1_cor.pdf))
 - [DS sur les types OCaml, pile, dictionnaire](qf/ds2.pdf) ([corrigé](qf/ds2_cor.pdf))
 - [TD sur les parcours de graphe](qf/td_graphes2.pdf) ([corrigé](qf/td_graphes2_cor.pdf))
+
+### MP2I du Lycée Janson de Sailly
+
+[Site avec cours, TP, DS, DM, sujets de khôlle](https://anthonylick.com/mp2i/)
+
+Tous les sujets sont accompagnés d'un corrigé.
+Les sujets de khôlle sont au format 2h sur machine.
+
+Par exemple :
+- [DM sur le tri rapide et l'algorithme de la médiane des médianes](https://anthonylick.com/wp-content/uploads/DM_rapide.pdf)
+- [TP sur les structures de données linéaires en C](https://anthonylick.com/wp-content/uploads/mp2i_TP5.pdf)
+- [Sujet de khôlle sur la localisation de point](https://anthonylick.com/wp-content/uploads/sujet_kholle4.pdf)
