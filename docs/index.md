@@ -80,3 +80,6 @@ Par exemple :
 - [DM sur le tri rapide et l'algorithme de la médiane des médianes](https://anthonylick.com/wp-content/uploads/DM_rapide.pdf)
 - [TP sur les structures de données linéaires en C](https://anthonylick.com/wp-content/uploads/mp2i_TP5.pdf)
 - [Sujet de khôlle sur la localisation de point](https://anthonylick.com/wp-content/uploads/sujet_kholle4.pdf)
+
+### MP2I du Lycée Descartes de Tours
+- [TP sur les tableau et les automates cellulaires](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))

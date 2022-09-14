@@ -1,0 +1,288 @@
+% Created 2022-09-14 mer. 19:15
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[french]{babel}
+\usepackage{tikz}
+\usepackage{minted}
+\usepackage[margin=1in,footskip=0.2in]{geometry}
+\author{Vladislav Tempez - MP2I - Lycée Descartes}
+\date{\today}
+\title{TP1: Tableaux statiques et automates cellulaires}
+\hypersetup{
+ pdfauthor={Vladislav Tempez - MP2I - Lycée Descartes},
+ pdftitle={TP1: Tableaux statiques et automates cellulaires},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
+ pdflang={French}}
+\begin{document}
+
+\maketitle
+
+\section{Consignes préalables}
+\label{sec:org32e8bc8}
+Pour ce TP et pour le reste de l'année, il vous est demandé d'utiliser des noms de variables et de fonctions qui sont pertinents et suffisamment explicites. Le choix d'un nom pour une fonction ou une variable n'est pas une chose aisée, et dépend fortement du contexte.
+Il est ainsi tout à fait acceptable de nommer une variable de boucle \texttt{i}, alors que nommer une fonction ainsi est bien plus problématique.
+Par cohérence avec les mots clé du langage et pour s'habituer à une bonne pratique il vous suggéré de nommer les variables et fonction en anglais, et de choisir comme convention séparer les mots dans un nom de variable par des \texttt{\_} .
+Les noms de fonction et de variables proposés dans ce TP et dans le code source proposé comme correction vont dans ce sens.\\
+
+Par ailleurs, si en \texttt{C} la structure du code n'a aucun impact à la compilation, pour des raisons de lisibilité pour vous-même et vos éventuels correcteurs, il vous est demandé de faire apparaître la structure du code via des espaces, des sauts de ligne, etc, c'est-à-dire d'indenter celui-ci. Essayer d'utiliser les mêmes conventions dans l'ensemble de vos codes sources.\\
+
+L'usage des options de compilation n'est pas à voir comme une contrainte dans l'écriture de vos programmes mais comme une aide à l'écriture de programme corrects. Les messages d'erreurs et d'avertissement (warnings) sont des outils important pour prévenir et corriger des bugs. \textbf{Il ne faut pas ignorer ces messages d'erreurs ni les avertissements.}
+Il est donc attendu de vous que vous compiliez vos programmes avec les options:
+\begin{enumerate}
+\item \texttt{-Wall}
+\item \texttt{-Wextra} qui ajoutent toutes deux des avertissements concernant des morceaux de code qui contiennent probablement une erreur
+\item \texttt{-o <nom de l’exécutable>} qui permet de nommer l'exécutable produit
+\item \texttt{-fsanitize=address,undefined} qui permet d'obtenir des messages d'erreurs plus complets lors d'une erreur d'exécution.
+\end{enumerate}
+
+
+\section{Tableaux en C}
+\label{sec:org89a082e}
+\subsection{Pourquoi utiliser des tableaux}
+\label{sec:org4419cce}
+Il est parfois intéressant d'effectuer un traitement algorithmique identique sur un nombre important de variables. Afin d'automatiser ce traitement, il est nécessaire de pouvoir accéder à ces variables de manière automatique, par exemple via une boucle. Des variables déclarées de manière individuelle ne permettent pas ceci.
+
+L'usage de tableau permet d'obtenir une collection de variables indexées par un entier auxquelles il est possible d'accéder et de traiter via une boucle.
+Dans ce TP, nous allons manipuler des tableaux dont la taille est \textbf{statique}, c'est-à-dire \textbf{fixée au moment de la compilation}, par opposition à des tableaux dynamiques dont la taille est fixée à l'exécution.
+
+Nous verrons plus tard dans l'année comment manipuler des tableaux dont la taille est dynamique.
+\subsection{Syntaxe des tableaux statiques en C}
+\label{sec:orgc51926c}
+En C les tableaux sont fortement typés, comme le sont les variables. Cela signifie qu'ils ne peuvent contenir qu'un seul type de valeur.
+La déclaration d'un tableau se fait avec la syntaxe suivante:
+\begin{minted}[]{c}
+<type> <nom_du_tableau>[<taille_du_tableau>];
+\end{minted}
+Attention, la taille du tableau doit sous la forme d'une expression qui ne contient pas de variable, \texttt{3*5} convient, mais pas \texttt{2*n}, même si \texttt{n} est une variable déjà déclarée et définie dont la valeur ne change pas.
+
+Un exemple de déclaration de tableau où on déclare un tableau de 5 \texttt{double} nommé \texttt{some\_double\_array}:
+\begin{minted}[]{c}
+double some_double_array[5*5];
+\end{minted}
+
+L'initialisation des valeurs d'un tableau peut être faite de deux manière. La première manière ne peut être réalisée que lors de la déclaration du tableau et consiste à fournir les éléments dans l'ordre, séparés par des virgules:
+\begin{minted}[]{c}
+int some_int_array[3] = {1, 2, 3};
+\end{minted}
+ou bien
+\begin{minted}[]{c}
+double some_double_array[5*5] = { 0 };
+\end{minted}
+pour initialiser tous les éléments à 0.\\
+
+Pour accéder aux éléments d'un tableau on peut utiliser la syntaxe
+\begin{minted}[]{c}
+<nom_du_tableau>[<indice>]
+\end{minted}
+par exemple on accède au 3e élément du tableau \texttt{some\_int\_array} avec la syntaxe:
+\begin{minted}[]{c}
+some_int_array[2]
+\end{minted}
+Ici, le troisième élément est indicé par 2 car les indices comment à 0.\\
+
+On peut respectivement récupérer cette valeur dans une variable ou la modifier:
+\begin{minted}[]{c}
+int a = some_int_array[2];
+some_int_array[2] = 2*a;
+\end{minted}
+
+Les tableaux se comportent différemment des variables classiques: il n'est pas possible de le renvoyer en tant que valeur, mais les modifications appliquées lors de l'exécution d'une fonction persistent à la sortie de la fonction.\\
+
+On peut illustrer ceci avec un exemple
+\begin{minted}[]{c}
+#include <stdio.h>
+
+void incr(int x){
+  x = x+1;
+}
+
+void incr_array(int array[], int array_size){
+  if (0 <taille_t){
+    t[0] = t[0]+1;
+  }
+}
+int main(){
+  int x = 0;
+  int t[3] = { 0 };
+  printf("x before incr %d\n",x);
+  incr(x);
+  printf("x after incr %d\n",x);
+  printf("a_0 before incr %d\n",t[0]);
+  incr_tab(t);
+  printf("a_0 after incr %d\n",t[0]);
+}
+\end{minted}
+
+qui donne:
+
+\begin{verbatim}
+x avant 0
+x après 0
+t_0 avant 0
+t_0 après 1
+\end{verbatim}
+
+
+On dit que \texttt{x} est passé par \textbf{valeur} alors que \texttt{t} est passé par \textbf{paramètre}. Le détail de ce mécanisme sera expliqué quand nous aborderons les pointeurs. Une conséquence de ceci (dont l'explication précise n'est pas donnée ici) est qu'on ne peut pas utiliser un tableau déclaré dans une fonction une fois sorti de la fonction. En particulier, \textbf{une fonction ne peut pas renvoyer de tableau} pour le moment.
+
+On peut noter que pour déclarer que l'argument d'une fonction est de type \texttt{int} on indique \texttt{int <nom\_du\_tableau>[]} dans les arguments de la fonction. Il n'est pas nécessaire d'indiquer entre [] la taille du tableau.
+
+Cependant, il n'est pas directement possible de connaître la taille du tableau à partir de celui-ci. Il est donc \textbf{impératif de passer en argument de toute fonction qui manipule un tableau la taille de ce tableau}.
+
+\subsection{Quelques exercices de syntaxe sur les tableaux}
+\label{sec:org370f63c}
+\begin{enumerate}
+\item Dans la fonction main, déclarez un tableau d'entier de taille 10 et initialisez-le de manière à ce que la case \texttt{i} contienne \texttt{i} (à l'aide d'un \texttt{for}).
+\item Écrivez une fonction \texttt{void print\_int\_array(int t[], int array\_size)} qui affiche les éléments d'un tableau d'entier sur une même ligne et un retour à la ligne en fin de tableau.
+\item Écrivez une fonction \texttt{void init\_array(int array[], int array\_size)} qui initialise un tableau de manière à ce que la case \texttt{i} contienne \texttt{f(i)} (à l'aide d'un \texttt{for}) où \texttt{int f(int i)} renvoie la plus grande puissance de 2 inférieure à \texttt{i}, c'est-à-dire \texttt{k} tel que \(2^k \leq i \leq 2^{k+1}\) ou bien 0 si \texttt{k} est une puissance de 2.
+\item Écrivez une fonction \texttt{int int\_array\_sum(int array[], int array\_size)} qui renvoie la somme des éléments d'un tableau, la tester sur les deux tableaux précédents
+\item Écrivez une fonction \texttt{int int\_array\_min(int array[], int array\_size)} qui renvoie le minimum des éléments d'un tableau, la tester sur les deux tableaux
+\item Écrivez une fonction \texttt{int int\_array\_max(int array[], int array\_size)} qui renvoie le maximum des éléments d'un tableau, la tester sur les deux tableaux précédents
+\item Reprenez ces questions pour des tableaux contenant des \texttt{double}.
+\end{enumerate}
+\subsection{Présentation des automates cellulaires}
+\label{sec:org2faf62f}
+Dans le reste de ce TP on va s'intéresser à certains automates cellulaires. Les automates cellulaires sont des sortes de machines, dont l'instance la plus célèbre est le \textbf{Jeu de la vie} inventé par \emph{John Conway}.
+
+Plus formellement, un automate cellulaire est constitué d'une \textbf{grille} dont les \textbf{cases} (ou \textbf{cellules}) peuvent être dans un nombre fini d'états. L'état dans lequel sont ces cases évolue en fonction de l'état courant et de l'état des cases voisines.
+L'ensemble des états de la grille à une étape donnée est appelé une \textbf{configuration}.
+La plupart du temps la grille est un quadrillage de dimension finie ou infinie et les cases voisines sont les cases qui bordent une case donnée.
+
+Ici nous nous intéresserons à des automates cellulaires plus modeste pour lesquels la grille est en une dimension et d'une taille finie. On représentera bien entendu ces grilles par des tableaux.
+On peut illustrer ceci avec l'exemple d'automate cellulaire suivant:
+\begin{itemize}
+\item La grille est un tableau de 5 cases adjacentes, numérotées de 0 à 4;
+\item Chaque case de la grille peut être dans un des états suivants: \{a, b, c, d\}.
+\item Les cases voisine d'une case donnée sont les cases situées à sa droite et à sa gauche.
+\item L'état d'une case évolue de manière à prendre l'état majoritaire parmi les cases voisine, case courante comprise. C'est l'ordre alphabétique qui départage les égalités.
+\end{itemize}
+
+On peut voir ici un exemple d'évolution des états d'un tel automate à partir d'un état initial:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+t & case 0 & case 1 & case 2 & case 3 & case 4\\
+\hline
+0 & b & a & b & c & c\\
+1 & a & b & a & c & c\\
+2 & a & a & a & c & c\\
+3 & a & a & a & c & c\\
+\hline
+\end{tabular}
+\end{center}
+
+Pour les cases du bord, on a utilisé le seul voisin disponible dans le décompte de l'état majoritaire.
+
+\subsection{Implémentation d'un premier automate cellulaire}
+\label{sec:org6dccba2}
+Pour implémenter un premier automate cellulaire, nous allons nous fixer des règles et états plus simple encore:
+\begin{itemize}
+\item La grille est un tableau de 64 cases.
+\item Chaque case peut prendre l'état 0 ou 1.
+\item L'évolution des états est donnée par le tableau suivant:
+\end{itemize}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+voisine de gauche & case courante & voisine de droite & nouvel état\\
+\hline
+0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1\\
+0 & 1 & 0 & 0\\
+0 & 1 & 1 & 0\\
+1 & 0 & 0 & 1\\
+1 & 0 & 1 & 0\\
+1 & 1 & 0 & 0\\
+1 & 1 & 1 & 0\\
+\hline
+\end{tabular}
+\end{center}
+
+Ou plus graphiquement, avec en noire les états 1 et en blanc les états 0.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+état courant (voisines comprises) & \square\square\square & \square\square\blacksquare & \square\blacksquare\square & \square\blacksquare\blacksquare & \blacksquare\square\square & \blacksquare\square\blacksquare & \blacksquare\blacksquare\square & \blacksquare\blacksquare\blacksquare\\
+\hline
+nouvel état de la case courante & \square & \blacksquare & \square & \square & \blacksquare & \square & \square & \square\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}
+\item Déroulez sur un papier 3 étapes de l'évolution de cet automate sur un papier pour une grille réduite à 5 cases. Quel problème se pose ? Comment proposeriez-vous de le régler ?
+\item Dans la suite de ce TP, on fixera les états des cases voisines à gauche de 0 et à droite de la case la plus à droite (63) comme constants à 0.
+\item (Bonus) Imaginez une autre manière de procéder que de fixer un état pour les cases adjacentes au bord. Pendant ce TP implémentez ce qui est nécessaire pour procéder de cette manière.
+\item Écrivez une fonction \texttt{int automata\_rule(int current\_cell, int left\_cell, int right\_cell)} qui prend en entrée l'état d'une case et de ses deux voisines et renvoie la sortie selon la règle détaillée plus haut.
+\item Écrivez une fonction \texttt{void update\_state(int grid\_now[], int updated\_grid[], int grid\_size)} qui calcule et stocke un nouvel état de grille dans le tableau \texttt{updated\_grid} passé en argument à partir d'un état courant contenu dans \texttt{grid\_now}. Cette fonction sera capable de calculer un nouvel état pour une taille de grille arbitraire mais passée en argument sous le nom \texttt{grid\_size}.
+\item (Bonus) Écrivez une fonction qui met à jour l'état d'une grille \textbf{en place}, c'est-à-dire sans avoir besoin d'un tableau supplémentaire pour stocker le nouvel état en modifiant directement le tableau contenant l'état courant. Attention à bien vérifier que cette fonction a un comportement identique à la fonction précédente.
+\item Écrivez une fonction \texttt{void run\_automata(int init\_grid[], int previous\_step\_grid[], int next\_step\_grid[], int grid\_size, int nb\_steps)} qui affiche dans le terminal les états successifs de l'automate à partir d'une grille initiale \texttt{init\_grid} de taille \texttt{grid\_size} pendant \texttt{nb\_steps} étapes en se servant des tableaux \texttt{previous\_step\_grid} et \texttt{next\_step\_grid} pour stocker les résultats du calcul d'un changement d'état.
+\item Essayez cette fonction sur une grille initiale de taille 64 dont toutes les cases sont dans l'état 0 sauf la 31e pour un nombre d'étapes de votre choix.
+\item Pour obtenir un meilleur affichage, écrivez une fonction \texttt{void print\_grid\_state(int grid[], int grid\_size)} qui affiche des \texttt{*} pour les cases dans l'état \texttt{1} et des espaces pour les cases dans l'état \texttt{0}.
+\item Appliquez cette fonction à partir d'autres états initiaux plus diversifiés, qu'observez-vous ?
+\end{enumerate}
+\subsection{Un affichage encore amélioré}
+\label{sec:org2ef9096}
+Le terminal ne permet pas d'afficher correctement des grilles dont la taille est supérieure à 80 cases. Pour résoudre ce problème nous allons créer une image dans le format basique \texttt{.pbm} pour \emph{portable bitmap}.
+Un fichier \texttt{StatePrint.c} est fourni pour ce TP dans le répertoire partagé.
+Ce fichier contient les fonctions
+\begin{enumerate}
+\item \texttt{FILE* init\_picture(char *name, int grid\_size, int nb\_steps)} qui permet de créer un fichier image aux dimensions de la grille et du nombre d'étapes à afficher et renvoie ce fichier. L'argument \texttt{name} correspond au nom du fichier et devra terminer par \texttt{.pbm}. Ce fichier sera créé à l'endroit où est exécuté le programme C. Le type de ce fichier est \texttt{FILE*}. Nous n'aborderons pas dans le TP l'écriture et la lecture de fichiers en C.
+\item \texttt{print\_state\_to\_file(FILE *f, int grid\_state[], int grid\_size)} qui permet d'écrire dans le fichier image les informations nécessaires à l'affichage de l'état de la grille contenu dans \texttt{grid\_state}.
+\item \texttt{void save\_picture(FILE *f)} qui permet de réaliser les opérations nécessaires à la sauvegarde du fichier.
+\end{enumerate}
+Pour intégrer utiliser le code d'un fichier externe, vous pouvez ajouter la ligne \texttt{\#include "<nom\_du\_fichier>.c"} en haut de votre code source si ce fichier est placé dans le même répertoire que le code source dans lequel il est inclus.
+\begin{enumerate}
+\item Écrivez une fonction \texttt{run\_automata\_with\_picture(int init\_grid[], int previous\_step\_grid[], int next\_step\_grid[], int grid\_size, int nb\_steps)} qui crée une image des états successifs de l'automate plutôt que de les afficher dans le terminal.
+\item Générez une image pour une grille de taille 256 et 1000 états successifs.
+\end{enumerate}
+\subsection{Pour aller plus loin (Bonus)}
+\label{sec:org551df94}
+\begin{itemize}
+\item Remplacez la règle décrite précédemment par la règle suivante et observez les motifs obtenus:
+\end{itemize}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+état courant (voisines comprises) & \square\square\square & \square\square\blacksquare & \square\blacksquare\square & \square\blacksquare\blacksquare & \blacksquare\square\square & \blacksquare\square\blacksquare & \blacksquare\blacksquare\square & \blacksquare\blacksquare\blacksquare\\
+\hline
+nouvel état de la case courante & \blacksquare & \square & \square & \blacksquare & \square & \square & \blacksquare & \square\\
+\hline
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item À partir de combien d'étape a-t-on vu tout ce qu'il y avait à voir pour un état initial donné ? Comment pourrait-on détecter cet état de fait ou calculer ce nombre d'étapes ?
+\end{itemize}
+\subsection{Génération de toutes les règles d'évolution pour les automates de ce type (Bonus)}
+\label{sec:org7990b6b}
+On a pour le moment vu deux règles différente d'évolution de l'état des cases. Dans cette partie nous allons tenter d'énumérer toutes les règles possibles et d'implémenter une fonction qui applique une règle étant donné son numéro.
+
+Pour énumérer ces règles, la première étape consiste à s'assurer que celles-ci sont en nombre fini.
+\begin{enumerate}
+\item Comment pourrait-on formaliser une règle sous la forme d'une fonction ? Précisez les ensembles de départ et d'arrivée de cette fonction.
+\item Calculez combien il existe de règles différentes d'après cette formulation.
+\item Pour caractériser une règle, on choisit de fixer un ordre sur les différentes configurations possible de voisinage pour une case. On peut remarquer qu'on a déjà procédé de la sorte dans la description des règles précédentes. Proposez une numérotation pour les différentes configurations possible, en n'oubliant pas que l'état de chacune des cases est un 0 ou un 1.
+\item Une fois une numérotation fixée sur les différentes configurations de voisinage, comment décrire de manière minimaliste une règle à l'aide de 0 et de 1.
+\item Déduisez de cette représentation une numérotation des règles.
+\item Écrivez une fonction qui étant donné un tableau de 0 et de 1 calcule l'entier dont c'est la représentation en base 2. Le nombre dans la case 0 correspondra au coefficient associé à la puissance de 2 la plus petite.
+\item Écrivez la fonction réciproque qui stocke dans un tableau, dont la taille est soigneusement choisie, la décomposition en base 2 d'un entier passé en entrée.
+\item Écrivez une fonction qui étant donné l'état d'une case et de ses deux voisines applique la règle dont le numéro est donné comme argument supplémentaire et calcule le nouvel état de la case courante. On pourra transformer cet état du voisinage en un entier, le numéro de ce voisinage et obtenir l'image de ce voisinage à partir de la décomposition du numéro de la règle.
+\item Écrivez une variante des fonctions \texttt{update\_grid} et \texttt{run} pour appliquer une règle dont le numéro est donné en argument.
+\item Observez les motifs produits par plusieurs règles de votre choix.
+\end{enumerate}
+\end{document}
