@@ -1,4 +1,4 @@
-% Created 2022-09-14 mer. 19:15
+% Created 2022-09-16 ven. 13:40
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 \maketitle
 
 \section{Consignes préalables}
-\label{sec:org32e8bc8}
+\label{sec:org5677c8f}
 Pour ce TP et pour le reste de l'année, il vous est demandé d'utiliser des noms de variables et de fonctions qui sont pertinents et suffisamment explicites. Le choix d'un nom pour une fonction ou une variable n'est pas une chose aisée, et dépend fortement du contexte.
 Il est ainsi tout à fait acceptable de nommer une variable de boucle \texttt{i}, alors que nommer une fonction ainsi est bien plus problématique.
 Par cohérence avec les mots clé du langage et pour s'habituer à une bonne pratique il vous suggéré de nommer les variables et fonction en anglais, et de choisir comme convention séparer les mots dans un nom de variable par des \texttt{\_} .
@@ -51,9 +51,9 @@ Il est donc attendu de vous que vous compiliez vos programmes avec les options:
 
 
 \section{Tableaux en C}
-\label{sec:org89a082e}
+\label{sec:org82aef3c}
 \subsection{Pourquoi utiliser des tableaux}
-\label{sec:org4419cce}
+\label{sec:org139c1d7}
 Il est parfois intéressant d'effectuer un traitement algorithmique identique sur un nombre important de variables. Afin d'automatiser ce traitement, il est nécessaire de pouvoir accéder à ces variables de manière automatique, par exemple via une boucle. Des variables déclarées de manière individuelle ne permettent pas ceci.
 
 L'usage de tableau permet d'obtenir une collection de variables indexées par un entier auxquelles il est possible d'accéder et de traiter via une boucle.
@@ -61,7 +61,7 @@ Dans ce TP, nous allons manipuler des tableaux dont la taille est \textbf{statiq
 
 Nous verrons plus tard dans l'année comment manipuler des tableaux dont la taille est dynamique.
 \subsection{Syntaxe des tableaux statiques en C}
-\label{sec:orgc51926c}
+\label{sec:org90e42a2}
 En C les tableaux sont fortement typés, comme le sont les variables. Cela signifie qu'ils ne peuvent contenir qu'un seul type de valeur.
 La déclaration d'un tableau se fait avec la syntaxe suivante:
 \begin{minted}[]{c}
@@ -69,7 +69,7 @@ La déclaration d'un tableau se fait avec la syntaxe suivante:
 \end{minted}
 Attention, la taille du tableau doit sous la forme d'une expression qui ne contient pas de variable, \texttt{3*5} convient, mais pas \texttt{2*n}, même si \texttt{n} est une variable déjà déclarée et définie dont la valeur ne change pas.
 
-Un exemple de déclaration de tableau où on déclare un tableau de 5 \texttt{double} nommé \texttt{some\_double\_array}:
+Un exemple de déclaration de tableau où on déclare un tableau de 25 = 5x5 \texttt{double} nommé \texttt{some\_double\_array}:
 \begin{minted}[]{c}
 double some_double_array[5*5];
 \end{minted}
@@ -111,29 +111,28 @@ void incr(int x){
 }
 
 void incr_array(int array[], int array_size){
-  if (0 <taille_t){
-    t[0] = t[0]+1;
+  if (0 < array_size){
+    array[0] = array[0]+1;
   }
 }
 int main(){
   int x = 0;
-  int t[3] = { 0 };
-  printf("x before incr %d\n",x);
+  int array[3] = { 0 };
+  printf("x before incr %d\n", x);
   incr(x);
-  printf("x after incr %d\n",x);
-  printf("a_0 before incr %d\n",t[0]);
-  incr_tab(t);
-  printf("a_0 after incr %d\n",t[0]);
+  printf("x after incr %d\n", x);
+  printf("a_0 before incr %d\n", array[0]);
+  incr_array(array, 3);
+  printf("a_0 after incr %d\n", array[0]);
 }
 \end{minted}
 
 qui donne:
-
 \begin{verbatim}
-x avant 0
-x après 0
-t_0 avant 0
-t_0 après 1
+x before incr 0
+x after incr 0
+a_0 before incr 0
+a_0 after incr 1
 \end{verbatim}
 
 
@@ -144,7 +143,7 @@ On peut noter que pour déclarer que l'argument d'une fonction est de type \text
 Cependant, il n'est pas directement possible de connaître la taille du tableau à partir de celui-ci. Il est donc \textbf{impératif de passer en argument de toute fonction qui manipule un tableau la taille de ce tableau}.
 
 \subsection{Quelques exercices de syntaxe sur les tableaux}
-\label{sec:org370f63c}
+\label{sec:org9f8f857}
 \begin{enumerate}
 \item Dans la fonction main, déclarez un tableau d'entier de taille 10 et initialisez-le de manière à ce que la case \texttt{i} contienne \texttt{i} (à l'aide d'un \texttt{for}).
 \item Écrivez une fonction \texttt{void print\_int\_array(int t[], int array\_size)} qui affiche les éléments d'un tableau d'entier sur une même ligne et un retour à la ligne en fin de tableau.
@@ -155,7 +154,7 @@ Cependant, il n'est pas directement possible de connaître la taille du tableau 
 \item Reprenez ces questions pour des tableaux contenant des \texttt{double}.
 \end{enumerate}
 \subsection{Présentation des automates cellulaires}
-\label{sec:org2faf62f}
+\label{sec:orgda2c638}
 Dans le reste de ce TP on va s'intéresser à certains automates cellulaires. Les automates cellulaires sont des sortes de machines, dont l'instance la plus célèbre est le \textbf{Jeu de la vie} inventé par \emph{John Conway}.
 
 Plus formellement, un automate cellulaire est constitué d'une \textbf{grille} dont les \textbf{cases} (ou \textbf{cellules}) peuvent être dans un nombre fini d'états. L'état dans lequel sont ces cases évolue en fonction de l'état courant et de l'état des cases voisines.
@@ -188,7 +187,7 @@ t & case 0 & case 1 & case 2 & case 3 & case 4\\
 Pour les cases du bord, on a utilisé le seul voisin disponible dans le décompte de l'état majoritaire.
 
 \subsection{Implémentation d'un premier automate cellulaire}
-\label{sec:org6dccba2}
+\label{sec:org0958e7a}
 Pour implémenter un premier automate cellulaire, nous allons nous fixer des règles et états plus simple encore:
 \begin{itemize}
 \item La grille est un tableau de 64 cases.
@@ -225,7 +224,7 @@ nouvel état de la case courante & \square & \blacksquare & \square & \square & 
 \end{center}
 
 \begin{enumerate}
-\item Déroulez sur un papier 3 étapes de l'évolution de cet automate sur un papier pour une grille réduite à 5 cases. Quel problème se pose ? Comment proposeriez-vous de le régler ?
+\item Déroulez sur un papier 3 étapes de l'évolution de cet automate sur un papier pour une grille réduite à 5 cases et à partir d'un état que vous choisirez. Quel problème se pose ? Comment proposeriez-vous de le régler ?
 \item Dans la suite de ce TP, on fixera les états des cases voisines à gauche de 0 et à droite de la case la plus à droite (63) comme constants à 0.
 \item (Bonus) Imaginez une autre manière de procéder que de fixer un état pour les cases adjacentes au bord. Pendant ce TP implémentez ce qui est nécessaire pour procéder de cette manière.
 \item Écrivez une fonction \texttt{int automata\_rule(int current\_cell, int left\_cell, int right\_cell)} qui prend en entrée l'état d'une case et de ses deux voisines et renvoie la sortie selon la règle détaillée plus haut.
@@ -237,7 +236,7 @@ nouvel état de la case courante & \square & \blacksquare & \square & \square & 
 \item Appliquez cette fonction à partir d'autres états initiaux plus diversifiés, qu'observez-vous ?
 \end{enumerate}
 \subsection{Un affichage encore amélioré}
-\label{sec:org2ef9096}
+\label{sec:orgf34b47e}
 Le terminal ne permet pas d'afficher correctement des grilles dont la taille est supérieure à 80 cases. Pour résoudre ce problème nous allons créer une image dans le format basique \texttt{.pbm} pour \emph{portable bitmap}.
 Un fichier \texttt{StatePrint.c} est fourni pour ce TP dans le répertoire partagé.
 Ce fichier contient les fonctions
@@ -252,7 +251,7 @@ Pour intégrer utiliser le code d'un fichier externe, vous pouvez ajouter la lig
 \item Générez une image pour une grille de taille 256 et 1000 états successifs.
 \end{enumerate}
 \subsection{Pour aller plus loin (Bonus)}
-\label{sec:org551df94}
+\label{sec:org450bbb8}
 \begin{itemize}
 \item Remplacez la règle décrite précédemment par la règle suivante et observez les motifs obtenus:
 \end{itemize}
@@ -269,7 +268,7 @@ nouvel état de la case courante & \blacksquare & \square & \square & \blacksqua
 \item À partir de combien d'étape a-t-on vu tout ce qu'il y avait à voir pour un état initial donné ? Comment pourrait-on détecter cet état de fait ou calculer ce nombre d'étapes ?
 \end{itemize}
 \subsection{Génération de toutes les règles d'évolution pour les automates de ce type (Bonus)}
-\label{sec:org7990b6b}
+\label{sec:org7adedb9}
 On a pour le moment vu deux règles différente d'évolution de l'état des cases. Dans cette partie nous allons tenter d'énumérer toutes les règles possibles et d'implémenter une fonction qui applique une règle étant donné son numéro.
 
 Pour énumérer ces règles, la première étape consiste à s'assurer que celles-ci sont en nombre fini.

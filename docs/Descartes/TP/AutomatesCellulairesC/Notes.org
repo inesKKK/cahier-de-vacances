@@ -140,7 +140,7 @@ La déclaration d'un tableau se fait avec la syntaxe suivante:
 #+end_src
 Attention, la taille du tableau doit sous la forme d'une expression qui ne contient pas de variable, ~3*5~ convient, mais pas ~2*n~, même si ~n~ est une variable déjà déclarée et définie dont la valeur ne change pas.
 
-Un exemple de déclaration de tableau où on déclare un tableau de 5 ~double~ nommé ~some_double_array~:
+Un exemple de déclaration de tableau où on déclare un tableau de 25 = 5x5 ~double~ nommé ~some_double_array~:
 #+begin_src C
   double some_double_array[5*5];
 #+end_src
@@ -182,28 +182,28 @@ On peut illustrer ceci avec un exemple
   }
 
   void incr_array(int array[], int array_size){
-    if (0 <taille_t){
-      t[0] = t[0]+1;
+    if (0 < array_size){
+      array[0] = array[0]+1;
     }
   }
   int main(){
     int x = 0;
-    int t[3] = { 0 };
-    printf("x before incr %d\n",x);
+    int array[3] = { 0 };
+    printf("x before incr %d\n", x);
     incr(x);
-    printf("x after incr %d\n",x);
-    printf("a_0 before incr %d\n",t[0]);
-    incr_tab(t);
-    printf("a_0 after incr %d\n",t[0]);
+    printf("x after incr %d\n", x);
+    printf("a_0 before incr %d\n", array[0]);
+    incr_array(array, 3);
+    printf("a_0 after incr %d\n", array[0]);
   }
 #+end_src
 
 qui donne:
+: x before incr 0
+: x after incr 0
+: a_0 before incr 0
+: a_0 after incr 1
 
-: x avant 0
-: x après 0
-: t_0 avant 0
-: t_0 après 1
 
 On dit que ~x~ est passé par *valeur* alors que ~t~ est passé par *paramètre*. Le détail de ce mécanisme sera expliqué quand nous aborderons les pointeurs. Une conséquence de ceci (dont l'explication précise n'est pas donnée ici) est qu'on ne peut pas utiliser un tableau déclaré dans une fonction une fois sorti de la fonction. En particulier, *une fonction ne peut pas renvoyer de tableau* pour le moment.
 
@@ -274,7 +274,7 @@ Ou plus graphiquement, avec en noire les états 1 et en blanc les états 0.
 | nouvel état de la case courante   | \square               | \blacksquare               |                   \square         |                             \square    |  \blacksquare                          |                        \square         |                   \square             |                      \square               |
 |-----------------------------------+-----------------------+----------------------------+----------------------------+---------------------------------+----------------------------+---------------------------------+---------------------------------+--------------------------------------|
 
-1. Déroulez sur un papier 3 étapes de l'évolution de cet automate sur un papier pour une grille réduite à 5 cases. Quel problème se pose ? Comment proposeriez-vous de le régler ?
+1. Déroulez sur un papier 3 étapes de l'évolution de cet automate sur un papier pour une grille réduite à 5 cases et à partir d'un état que vous choisirez. Quel problème se pose ? Comment proposeriez-vous de le régler ?
 2. Dans la suite de ce TP, on fixera les états des cases voisines à gauche de 0 et à droite de la case la plus à droite (63) comme constants à 0.
 3. (Bonus) Imaginez une autre manière de procéder que de fixer un état pour les cases adjacentes au bord. Pendant ce TP implémentez ce qui est nécessaire pour procéder de cette manière.
 4. Écrivez une fonction ~int automata_rule(int current_cell, int left_cell, int right_cell)~ qui prend en entrée l'état d'une case et de ses deux voisines et renvoie la sortie selon la règle détaillée plus haut.
