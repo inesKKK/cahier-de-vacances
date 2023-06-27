@@ -81,5 +81,14 @@ Par exemple :
 - [TP sur les structures de données linéaires en C](https://anthonylick.com/wp-content/uploads/mp2i_TP5.pdf)
 - [Sujet de khôlle sur la localisation de point](https://anthonylick.com/wp-content/uploads/sujet_kholle4.pdf)
 
-### MP2I du Lycée Descartes de Tours
-- [TP sur les tableau et les automates cellulaires](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
+### MP2I du Lycée Descartes
+- [Sujets de colle divers au format 1h sur tableau](Descartes/Colles/)
+- [Plusieurs sujets de TD](Descartes/TD/)
+- [TP sur les tableaux et les automates cellulaires](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
+
+#### Quelques sujets de devoirs
+- [Autour de l'exponentiation modulaire rapide](Descartes/Devoirs/DM_analyse_algos_crypto.pdf) permet de réviser l'analyse de correction et complexité d'algorithmes.
+- [Code de Gray](Descartes/Devoirs/DM_code_Gray.pdf) permet de revisiter la façon de représenter des entiers.
+- [Graphes planaires](Descartes/Devoirs/DM_graphes_planaires.pdf) permet de réviser les graphes.
+- [Logique](Descartes/Devoirs/DM_logique.pdf) et [Tseitin](Descartes/Devoirs/DS_logique.pdf) permettent de réviser le calcul propositionnel.
+- [Recherche de collisions](Descartes/Devoirs/DM_recherche_collisions.pdf) permet d'étudier un algorithme utilisant la structure de table de hachage.
