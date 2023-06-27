@@ -82,8 +82,24 @@ Par exemple :
 - [Sujet de khôlle sur la localisation de point](https://anthonylick.com/wp-content/uploads/sujet_kholle4.pdf)
 
 ### MP2I du Lycée Descartes
-- [Sujets de colle divers au format 1h sur tableau](Descartes/Colles/)
-- [Plusieurs sujets de TD](Descartes/TD/)
+#### Quelques sujets de colle (au format 1h sur tableau)
+- Pour réviser [l'analyse d'algorithmes](Descartes/Colles/Colles_analyse_algos.pdf)
+- Pour réviser [les graphes](Descartes/Colles/Colles_graphes.pdf)
+- Pour réviser [la logique](Descartes/Colles/Colles_logique.pdf)
+- Pour réviser [la programmation dynamique](Descartes/Colles/Colles_programmation_dynamique.pdf)
+
+#### Plusieurs sujets de TD
+- Pour réviser les arbres : [ici](Descartes/TD/TD_ABR.pdf) et [ici](Descartes/TD/TD_arbres_binaires.pdf)
+- Pour réviser les graphes : [ici](Descartes/TD/TD_graphes.pdf) et [ici](Descartes/TD/TD_algorithmique_graphes.pdf)
+- Pour réviser l'algorithmique du texte : [ici](Descartes/TD/TD_algos_texte.pdf)
+- Pour réviser l'analyse d'algorithmes : [ici](Descartes/TD/TD_terminaison_correction.pdf) et [ici](Descartes/TD/TD_correction_complexite.pdf)
+- Pour réviser les structures de données : [ici](Descartes/TD/TD_hachage.pdf), [ici](Descartes/TD/TD_piles_files.pdf) et [ici](Descartes/TD/TD_representations.pdf)
+- Pour réviser diverses stratégies algorithmiques : [ici](Descartes/TD/TD_DPR.pdf) et [ici](Descartes/TD/TD_programmation_dynamique.pdf)
+- Pour réviser la logique : [ici](Descartes/TD/TD_logique.pdf), [ici](Descartes/TD/TD_satisfiabilite.pdf) et [ici](Descartes/TD/TD_semantique_calcul_prop.pdf)
+
+
+#### Un sujet de TP corrigé
+
 - [TP sur les tableaux et les automates cellulaires](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
 
 #### Quelques sujets de devoirs
