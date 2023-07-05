@@ -1,0 +1,313 @@
+% \documentclass[a5paper, 12pt]{article}
+\documentclass[a4paper, 10pt]{article}
+
+%FOLD
+\usepackage[margin=0.5in,footskip=0.15in]{geometry}
+
+\usepackage[utf8]{inputenc}% gestion des accents (source)
+\usepackage[T1]{fontenc}% gestion des accents (PDF)
+\usepackage[french]{babel}% gestion du français
+\usepackage{textcomp}% caractères additionnels
+\usepackage{mathtools,amssymb,amsthm}% AMS + mathtools
+\usepackage{lmodern}% police de caractère
+
+\usepackage{hyperref}% gestion des hyperliens
+
+\usepackage{xcolor}% gestion des couleurs
+\usepackage{graphicx}% gestion des images
+\usepackage{minted}% coloration syntaxique
+
+\usepackage{colortbl} %coloration des tableaux
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\definecolor{bluebell}{rgb}{0.64, 0.64, 0.82}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+
+\usepackage{enumitem}% resume itemize
+
+\newminted{ocaml}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+\newminted{c}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+
+\newmintinline[mlc]{c}{style=tango, breaklines=true, autogobble}%Minted inLine in C
+\newmintinline[mlo]{ocaml}{style=tango, breaklines=true, autogobble}%Minted inLine in OCaml
+
+\usepackage{tikz}% figure (graphes, arbres)
+\usetikzlibrary{automata, positioning, arrows} %pour les automates finis
+
+\usepackage[framemethod=tikz]{mdframed}% environnements colorés
+
+\newenvironment{defEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={applegreen!05},
+    linecolor={applegreen!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Définition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{propEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={babyblueeyes!05},
+    linecolor={babyblueeyes!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Proposition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{exEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={gray!05},
+    linecolor={gray!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exemple}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{rqEnv}
+{
+  \mdfsetup{
+    topline=false,
+    leftline=false,
+    bottomline=false,
+    rightline=false,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerleftmargin=4pt,
+    backgroundcolor={gray!10},
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \textit{Remarque:}
+  }{\end{mdframed}}
+
+\newenvironment{exoEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={bluebell!05},
+    linecolor={bluebell!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exercice}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{proofEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Démonstration}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{Warning}[1]
+{
+  \mdfsetup{
+    roundcorner=1pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!70},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Attention !}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+
+\setlength{\parindent}{0pt}
+
+\newcounter{exocntr}
+\newcommand{\exoCommand}[1]{\stepcounter{exocntr} \textbf{Exercice \arabic{exocntr}}: #1 \newline}
+
+\newcommand{\Vrai}{1}
+\newcommand{\Faux}{0}
+%FOLD
+% Document start
+
+% \author{MP2I Descartes, Tours - Vladislav Tempez}
+\title{TP16 - Labyrinthe}
+\begin{document}
+\maketitle
+%Plein d'imprécisions, TODO compléter
+L'objectif de ce TP est la génération de labyrinthes. On se place pour cela sur une grille carrée de taille \(n\times m\). Le labyrinthe sera modélisé par un graphe dans lequel les cases de la grille sont les sommets et deux cases sont connectées si on peut passer de l'une à l'autre (i.e. adjacentes et pas de mur entre les deux).
+\begin{enumerate}
+\item Les graphes utilisés sont-ils orientés ou non orientés ?
+\item Comment donner un numéro unique à chacune des cases de la grille ? Implémentez deux fonctions \mlc{int coord_to_id(int i, int j, int n, int m)} et \mlc{void coord_from_id(int id, int n, int m, int* x, int* y)} pour passer des coordonnées dans la grille à ce numéro unique et réciproquement.
+\item Implémentez une fonction \mlc{bool is_adjacent(int id_1, int id_2, int n, int m)} qui détermine si deux cases de numéro \mlc{id_1} et \mlc{id_2} sont adjacentes.
+\end{enumerate}
+% Graphes en C: via matrice d'adjacence ? Via table de hash ? Via tableaux redimensionnables ?
+Pour travailler avec des graphes, on décide d'utiliser une représentation par matrice d'adjacence. (Le listes en C, c'est désagréable ...).
+\begin{enumerate}[resume]
+% Implem des fonctions de base: voisins, adjacent nombre de sommets
+\item Déterminez un type enregistrement (\mlc{struct}) qui représente un graphe et contient les informations utiles au sujet de ce graphe.
+\item Implémentez une fonction \mlc{graph_t* create_graph(int nb_vertices)} qui crée un graphe avec \mlc{nb_vertices} sommets et aucun arc.
+\item Implémentez une fonction \mlc{void free_graph(graph_t* g)} qui libère la mémoire utilisée par un graphe \mlc{g}.
+\item Implémentez une fonction \mlc{bool is_neighbor(graph_t* g, int i, int j)} qui détermine si \mlc{j} est voisin de \mlc{i}.
+\end{enumerate}
+Pour générer un labyrinthe, on va maintenant relier des cases les unes avec les autres: casser des murs pour créer des chemins.
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlc{add_edge(graph_t* g, int i, int j)} qui ajoute un arc du sommet \mlc{i} vers le sommet \mlc{j} dans le graphe \mlc{g}.
+\item Implémentez une fonction de suppression d'arc \mlc{remove_edge(graph_t* g, int i, int j)}
+\item Un labyrinthe sur une grille de taille \(n\times m\) possède \(n\times m\) sommet, mais il est pertinent de conserver l'information des dimensions pour pouvoir identifier les coordonnées des cases à partir de leur numéro en plus de la structure de graphe du labyrinthe. Implémentez une structure \mlc{labyrinth_t} pour réaliser ceci.
+\item Implémentez une fonction \mlc{labyrinth_t* create_labyrinth(int n, int m)} qui crée un labyrinthe sur une grille de taille \mlc{n}\(\times\)\mlc{m}.
+\item Implémentez une fonction \mlc{free_labyrinth(labyrinth_t*)} qui libère la mémoire utilisée par un labyrinth.
+\item Implémentez une fonction \mlc{void remove_wall(labyrinth_t* lab, int i_1, int j_1, int i_2, int j_2)} qui supprime le mur entre les cases de coordonnées \(i_1, j_1\) et \(i_2,j_2\).
+\item Implémentez une fonction \mlc{void add_wall(labyrinth_t* lab, int i_1, int j_1, int i_2, int j_2)} qui ajoute un mur entre les cases de coordonnées \(i_1, j_1\) et \(i_2,j_2\).
+% Affichage des labyrinthes
+\item Implémentez une fonction d'affichage d'un graphe interprété comme un labyrinthe. Pour plus de lisibilité on pourra procéder de la sorte: on utilisera un caractère pour un espace libre et un autre pour un mur. Les cases seront toujours des espaces libres. Une ligne sur deux représente les cases, et une sur deux les murs, même chose pour les colonnes. Voici un exemple de labyrinthe \(3\times 3\) dans lequel toutes les cases sont isolées. %Attention, pas facile !
+\begin{ccode}
+#######
+# # # #
+#######
+# # # #
+#######
+# # # #
+#######
+\end{ccode}
+\item Testez cette fonction et les précédentes en créant manuellement un labyrinthe via un choix arbitraire des murs à casser. Affichez ce labyrinthe.
+\end{enumerate}
+% Labyrinthe parfait = un seul chemin entre deux cases -> arbre !
+On souhaite créer un labyrinthe dans lequel il n'existe qu'un seul chemin d'une case à une autre. Pour cela on se sert d'une structure \emph{union-find} dont le principe est le suivant:
+cette structure représente une partition \(P=(P_i)\)  d'un ensemble fini \(E\) c'est-à-dire qu'on a \(\forall i\neq j,~P_i\cap P_j = \emptyset\) et \(E=\cup_i P_i\).\\
+% Via Union Find: cf filiatre p 435 999
+% Implem union find via des tableaux comme dans le DS
+Son interface contient les fonctions suivantes:
+\begin{itemize}
+\item \mlc{init} qui initialise la structure avec la partition triviale telle que chaque élément soit seul dans son ensemble.
+\item \mlc{union} qui fusionne deux ensembles \(P_i\) et \(P_j\) dans la partition en un seul
+\item \mlc{find} qui renvoie le numéro de l'ensemble \(P_i\) de la partition auquel appartient un élément de \(E\) passé en argument.
+\end{itemize}
+Bien entendu, après la fusion de deux éléments de la partition via \mlc{union}, on souhaite que le numéro de la partition obtenu avec \mlc{find} tienne compte de la fusion.
+\smallbreak
+% Génération de labyrinthes: génération de tous les couples d'arc (ici des portes) et union des cases si elles sont dans des classes différentes. À la fin une seule classe et un seul chemin de début à la fin.
+\begin{enumerate}[resume]
+\item Implémentez une structure \emph{union-find} qui consiste en un tableau dont la case \mlc{i} contient le numéro de partition du sommet \mlc{i}.
+\item Implémentez les fonctions \mlc{uf_t* create_uf(int nb_elements)}.
+\item Implémentez les fonctions \mlc{void unite_classes(uf_t* partition, int i, int j)} et \mlc{int find(uf_t* partition, int element)}. (\mlc{union} est un mot clé réservé en C, on ne peut pas l'utiliser pour la fonction d'union)
+\end{enumerate}
+Ici l'ensemble \(E\) est l'ensemble des sommets, et deux sommets sont dans la même partition s'il existe un chemin de l'un vers l'autre. Pour créer un labyrinthe on procède de la manière suivante:
+% Génération de labyrinthe = génération de graphe dont les sommets sont des cases.
+\begin{itemize}
+\item Choisit un arc (qui sont ici des murs à abattre ou non) au hasard
+\item On vérifie s'il relie deux cases qui sont dans la même partition. Si ce n'est pas le cas, on casse le mur et on met à jour la partition, sinon on passe au suivant.
+\item Quand on a considéré tous les murs, on a terminé, le labyrinthe est prêt.
+\end{itemize}
+Ici, il faut choisir des murs (qui sont des arcs, c'est-à-dire des couples de sommets du graphe). Pour déterminer le critère d'arrêt de l'algorithme, il faut garder trace des murs déjà considérés.
+Deux approches sont possibles:
+\begin{itemize}
+\item Générer un tableau mélangé de tous les murs et la parcourir du début à la fin
+\item Compter le nombre de murs déjà considérés. Tant que ce nombre n'a pas atteint le nombre total de murs, on tire un mur non traité au hasard. Pour cela on tire un numéro de mur au hasard tant qu'on n'a pas un mur non traité.
+\end{itemize}
+\begin{rqEnv}
+  Pour générer des nombres aléatoires en C, il est nécessaire d'inclure \mlc{#include <stdlib.h>} pour avoir accès à la fonction \mlc{rand}. Cette fonction ne prend pas d'argument et génère un entier pris uniformément entre \mlc{0} et \mlc{RAND_MAX} qui est une constante dont la valeur dépend de la machine.
+\smallbreak
+Ainsi \mlc{rand() % n} génère un entier dans \([0,n-1]\), et \mlc{rand() % 2 == 0} un booléen. Pour obtenir un \mlc{float} dans \([0,1]\) on peut utiliser \mlc{(float)rand()/RAND_MAX}.
+Cependant, pour utiliser la fonction \mlc{rand} il faut au préalable initialiser le générateur pseudo aléatoire. Pour cela on peut utiliser la fonction \mlc{srand} qui prend un entier et l'utilise comme graine pour le générateur pseudo aléatoire. Pour une graine fixée, le fonctionnement de \mlc{rand} sera déterministe: deux exécutions du programme seront identiques du point de vue du comportement de \mlc{rand}. Ce peut être pratique lors de la conception et de la phase de debug.
+\smallbreak
+Pour une graine qui change à chaque exécution du programme on peut utiliser en début de fonction \mlc{main} \mlc{srand(time(NULL))} qui initialise le générateur pseudo aléatoire à l'aide de la date courante à l'exécution du programme. Pour avoir accès à la fonction \mlc{time}, un \mlc{#include <time.h>} est nécessaire.
+\end{rqEnv}
+\begin{enumerate}[resume]
+\item Implémentez l'algorithme de génération de labyrinthe présenté plus haut en utilisant l'une des deux approches proposée pour obtenir des murs au hasard.
+\item Affichez les labyrinthes obtenus.
+\item (Bonus) Résolvez le labyrinthe à l'aide d'un algorithme de parcours.
+\end{enumerate}
+% Résolution des labyrinthes via un parcours.
+% Variante/Bonus: on souhaite faire un labyrinthe mais certains murs sont plus épais que d'autres à casser et on veut en faire le moins possible -> quel algorithme ? Kruskal !
+% TODO gif de l'évolution de la génération
+% TODO Cas d'une grille hexagonale
+% TODO ajout d'un exemple de labyrinthe généré
+% TODO étoffer le mélange
+\end{document}
