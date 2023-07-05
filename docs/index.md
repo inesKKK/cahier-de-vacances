@@ -38,7 +38,6 @@ d'informatique de diverses MP2I 2021-2022 et 2022-2023.
 * Un [DS](Faidherbe/DS6-Faidherbe.pdf) composé de différents exercices autour de la logique et de l'algorithmique du texte.
 
 ### MP2I du Lycée Kléber
-
 #### Colles
 Tous les sujets de colles (30 semaines) sont [dans ce dossier](Kleber/colles).
 Ces colles sont plutôt axées programmation que preuve ou conception/étude d'algorithmes.
@@ -98,13 +97,26 @@ Par exemple :
 - Pour réviser la logique : [ici](Descartes/TD/TD_logique.pdf), [ici](Descartes/TD/TD_satisfiabilite.pdf) et [ici](Descartes/TD/TD_semantique_calcul_prop.pdf)
 
 
-#### Un sujet de TP corrigé
-
-- [TP sur les tableaux et les automates cellulaires](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
-
 #### Quelques sujets de devoirs
 - [Autour de l'exponentiation modulaire rapide](Descartes/Devoirs/DM_analyse_algos_crypto.pdf) permet de réviser l'analyse de correction et complexité d'algorithmes.
 - [Code de Gray](Descartes/Devoirs/DM_code_Gray.pdf) permet de revisiter la façon de représenter des entiers.
 - [Graphes planaires](Descartes/Devoirs/DM_graphes_planaires.pdf) permet de réviser les graphes.
 - [Logique](Descartes/Devoirs/DM_logique.pdf) et [Tseitin](Descartes/Devoirs/DS_logique.pdf) permettent de réviser le calcul propositionnel.
 - [Recherche de collisions](Descartes/Devoirs/DM_recherche_collisions.pdf) permet d'étudier un algorithme utilisant la structure de table de hachage.
+
+#### Sujets de TP corrigés
+- [TP sur les tableaux et les automates cellulaires en C](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
+- [TP sur l'algorithme de Huffman et les arbres en C](Descartes/TP/TP14-Huffman/TP14.pdf) ([Correction et fichier annexes](Descartes/TP/TP14-Huffman/Correction.zip))
+- [TP autour des graphes et des labyrinthes en C](Descartes/TP/TP16_Labyrinthe/TP_16_Labyrinthe.pdf) ([Correction](Descartes/TP/TP16_Labyrinthe/Correction/Correction_TP16.c))
+- [TP sur la distance d'édition et la commande __diff__ en OCaml](Descartes/TP/TP17_Diff/TP17_Diff.pdf) ([Correction](Descartes/TP/TP17_Diff/Correction/Correction_TP17.ml)[Source de la commande diff en OCaml](Descartes/TP/TP17_Diff/Correction/diff.ml))
+
+Deux TP sur le programme de 2e année (IA)
+
+- [TP sur l'algorithme ID3 en C](Descartes/TP/TP20_ID3/TP_20_ID3.pdf)
+  [Données header](Descartes/TP/TP20_ID3/mushroom_signature.data)
+  [Données](Descartes/TP/TP20_ID3/mushroom.csv)
+  [Code de lecture des données (header)](Descartes/TP/TP20_ID3/data_read.h)
+  [Code de lecture des données (source)](Descartes/TP/TP20_ID3/data_read.c)
+  [Correction](Descartes/TP/TP20_ID3/Correction_TP20.zip)
+
+- [TP sur l'algorithme de classification hiérarchique ascendante pour la reconstruction d'arbre phylogénétiques en OCaml](Descartes/TP/TP21_Pingouins/TP_21.pdf) ([Code compagnon et données](Descartes/TP/TP21_Pingouins/CodeCompagnonEtDonnes.zip) [Correction](Descartes/TP/TP21_Pingouins/Corrige/corrige.ml))
