@@ -108,15 +108,20 @@ Par exemple :
 - [TP sur les tableaux et les automates cellulaires en C](Descartes/TP/AutomatesCellulairesC/Notes.pdf) ([Fichier annexe]([corrigé](Descartes/TP/AutomatesCellulairesC/StatePrint.c))) ([corrigé](Descartes/TP/AutomatesCellulairesC/TP1AC.c))
 - [TP sur l'algorithme de Huffman et les arbres en C](Descartes/TP/TP14-Huffman/TP14.pdf) ([Correction et fichier annexes](Descartes/TP/TP14-Huffman/Correction.zip))
 - [TP autour des graphes et des labyrinthes en C](Descartes/TP/TP16_Labyrinthe/TP_16_Labyrinthe.pdf) ([Correction](Descartes/TP/TP16_Labyrinthe/Correction/Correction_TP16.c))
-- [TP sur la distance d'édition et la commande __diff__ en OCaml](Descartes/TP/TP17_Diff/TP17_Diff.pdf) ([Correction](Descartes/TP/TP17_Diff/Correction/Correction_TP17.ml)[Source de la commande diff en OCaml](Descartes/TP/TP17_Diff/Correction/diff.ml))
+- [TP sur la distance d'édition et la commande __diff__ en OCaml](Descartes/TP/TP17_Diff/TP17_Diff.pdf) ([Correction](Descartes/TP/TP17_Diff/Correction/Correction_TP17.ml) [Source de la commande diff en OCaml](Descartes/TP/TP17_Diff/Correction/diff.ml))
 
 Deux TP sur le programme de 2e année (IA)
 
 - [TP sur l'algorithme ID3 en C](Descartes/TP/TP20_ID3/TP_20_ID3.pdf)
-  [Données header](Descartes/TP/TP20_ID3/mushroom_signature.data)
-  [Données](Descartes/TP/TP20_ID3/mushroom.csv)
-  [Code de lecture des données (header)](Descartes/TP/TP20_ID3/data_read.h)
-  [Code de lecture des données (source)](Descartes/TP/TP20_ID3/data_read.c)
-  [Correction](Descartes/TP/TP20_ID3/Correction_TP20.zip)
 
-- [TP sur l'algorithme de classification hiérarchique ascendante pour la reconstruction d'arbre phylogénétiques en OCaml](Descartes/TP/TP21_Pingouins/TP_21.pdf) ([Code compagnon et données](Descartes/TP/TP21_Pingouins/CodeCompagnonEtDonnes.zip) [Correction](Descartes/TP/TP21_Pingouins/Corrige/corrige.ml))
+  -[Données header](Descartes/TP/TP20_ID3/mushroom_signature.data)
+
+  -[Données](Descartes/TP/TP20_ID3/mushroom.csv)
+
+  -[Code de lecture des données (header)](Descartes/TP/TP20_ID3/data_read.h)
+
+  -[Code de lecture des données (source)](Descartes/TP/TP20_ID3/data_read.c)
+
+  -[Correction](Descartes/TP/TP20_ID3/Correction_TP20.zip)
+
+- [TP sur l'algorithme de classification hiérarchique ascendante pour la reconstruction d'arbres phylogénétiques en OCaml](Descartes/TP/TP21_Pingouins/TP21.pdf) ([Code compagnon et données](Descartes/TP/TP21_Pingouins/CodeCompagnonEtDonnees.zip) [Correction](Descartes/TP/TP21_Pingouins/Corrige/corrige.ml))
