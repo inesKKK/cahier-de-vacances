@@ -1,0 +1,343 @@
+% \documentclass[a5paper, 12pt]{article}
+\documentclass[a4paper, 10pt]{article}
+
+%FOLD
+\usepackage[margin=0.5in,footskip=0.15in]{geometry}
+
+\usepackage[utf8]{inputenc}% gestion des accents (source)
+\usepackage[T1]{fontenc}% gestion des accents (PDF)
+\usepackage[french]{babel}% gestion du français
+\usepackage{textcomp}% caractères additionnels
+\usepackage{mathtools,amssymb,amsthm}% AMS + mathtools
+\usepackage{lmodern}% police de caractère
+
+\usepackage{hyperref}% gestion des hyperliens
+
+\usepackage{xcolor}% gestion des couleurs
+\usepackage{graphicx}% gestion des images
+\usepackage{minted}% coloration syntaxique
+
+\usepackage{colortbl} %coloration des tableaux
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\definecolor{bluebell}{rgb}{0.64, 0.64, 0.82}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+
+\usepackage{enumitem}% resume itemize
+
+\newminted{sql}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+\newminted{ocaml}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+\newminted{c}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+
+\newmintinline[mlc]{c}{style=tango, breaklines=true, autogobble}%Minted inLine in C
+\newmintinline[mlo]{ocaml}{style=tango, breaklines=true, autogobble}%Minted inLine in OCaml
+
+\usepackage{tikz}% figure (graphes, arbres)
+\usetikzlibrary{automata, positioning, arrows} %pour les automates finis
+
+\usepackage[framemethod=tikz]{mdframed}% environnements colorés
+
+\newenvironment{defEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={applegreen!05},
+    linecolor={applegreen!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Définition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{propEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={babyblueeyes!05},
+    linecolor={babyblueeyes!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Proposition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{exEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={gray!05},
+    linecolor={gray!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exemple}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{rqEnv}
+{
+  \mdfsetup{
+    topline=false,
+    leftline=false,
+    bottomline=false,
+    rightline=false,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerleftmargin=4pt,
+    backgroundcolor={gray!10},
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \textit{Remarque:}
+  }{\end{mdframed}}
+
+\newenvironment{exoEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={bluebell!05},
+    linecolor={bluebell!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exercice}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{proofEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Démonstration}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{Warning}[1]
+{
+  \mdfsetup{
+    roundcorner=1pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!70},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Attention !}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+
+\setlength{\parindent}{0pt}
+
+\newcounter{exocntr}
+\newcommand{\exoCommand}[1]{\stepcounter{exocntr} \textbf{Exercice \arabic{exocntr}}: #1 \newline}
+
+\newcommand{\Vrai}{1}
+\newcommand{\Faux}{0}
+%FOLD
+% Document start
+\usepackage{multicol}
+\author{MP2I Descartes, Tours - Vladislav Tempez}
+\title{TP 20: Quels sont les champignons toxiques ?}
+\begin{document}
+\maketitle
+% Source données: https://archive.ics.uci.edu/ml/datasets/mushroom
+% Dataset alternatif: https://mushroom.mathematik.uni-marburg.de/
+% Probablement plus difficile et mieux équilibré d'après le papier associé
+L'objectif de ce TP est d'implémenter l'algorithme ID3 et de l'utiliser pour construire un arbre de décision classifiant les champignons en deux catégories: comestible ou toxique.
+\section{Préparation des données}
+Le jeu de données provient de~\url{https://archive.ics.uci.edu/ml/datasets/mushroom}. Les champignons y sont décrits par 22 caractéristiques (features dans le code) dont l'intitulé est le suivant:
+\begin{multicols}{4}
+\begin{enumerate}
+\item cap-shape
+\item cap-surface
+\item cap-color
+\item bruises?
+\item odor
+\item gill-attachment
+\item gill-spacing
+\item gill-size
+\item gill-color
+\item stalk-shape
+\item stalk-root
+\item stalk-surface-above-ring
+\item stalk-surface-below-ring
+\item stalk-color-above-ring
+\item stalk-color-below-ring
+\item veil-type
+\item veil-color
+\item ring-number
+\item ring-type
+\item spore-print-color
+\item population
+\item habitat
+\end{enumerate}
+\end{multicols}
+Ces caractéristiques correspondent principalement à des aspects de la physiologie du champignon (comment se présente le chapeau, les lamelles, la tige, etc) et sont toutes catégorielles (elles prennent un nombre fini de valeurs). Le détail des valeurs prises est indiqué dans le fichier \mlc{mushroom_signature.data}.
+Les données elles-mêmes sont contenues dans le fichier \mlc{mushroom.csv} sous la forme d'une ligne par champignon, contenant, séparées par des virgules, la classe (e pour edible et p pour poisonous) suivie des différentes valeurs de chacun des features. Chaque valeur est résumée en une seule lettre, la correspondant est dans le fichier \mlc{.data}.
+\subsection{Lecture des fichiers de données}
+% Plan :
+% - Lecture des données et stockage dans des structs: -> donné
+% Deux structs: type de l'entrée et entrée
+% Type de l'entrée = tableau des noms des features et tableau de tableaux des différentes valeurs possibles pour les features + tableau de nombre de valeur pour chaque feature + nombre de features (idem pour la classe)
+% Lisible dans un csv adapté
+% Entrée tableau des features + id + classe
+% Un struct pour l'ensemble des données en plus ?
+Le code permettant de lire le fichier de données et de construire une représentation de ces données en mémoire est fourni dans les fichiers \mlc{data_read.c} et \mlc{data_read.h}. Le fichier \mlc{data_read.h} contient en particulier la signature des structures de données permettant de manipuler:
+\begin{itemize}
+\item La signature d'une donnée, qui indique le nombre des features, l'ensemble des noms de features (sous forme d'un tableau), l'ensemble des valeurs possibles pour ces features (sous forme d'un tableau), le nombre de valeurs possible pour chaque feature, l'ensemble des classes (sous forme d'un tableau) et le nombre de classes. C'est cette signature qui permet d'interpréter correction les structures suivantes.
+\item Un point de l'ensemble d'apprentissage, correspondant à un champignon via la structure \mlc{data_value}. Cette structure contient un identifiant, un tableau des valeurs prises pour chaque feature et la classe du champignon. Les valeurs et la classe ne sont pas représentées directement par la lettre présente dans le fichier \mlc{.csv} mais par le numéro de cette valeur (dans l'ordre de lecture du fichier \mlc.data). La correspondance numéro valeur peut être faite via la signature.
+\item Un data set qui contient un tableau de pointeurs vers les différents points qu'il contient, le nombre de points et un pointeur vers la signature des données. Attention, comme ce data set ne stocke par directement les points mais des pointeurs vers ceux-ci, les points peuvent être partagés par plusieurs data set et il convient de faire attention à la libération de ceux-ci.
+\end{itemize}
+En plus de ces définitions de type, le fichier \mlc{read_data.c} contient une fonction \mlc{data_signature_t* read_data_signature(char* signature_filename)} qui initialise une signature à l'aide du contenu du fichier \mlc{.data}.
+Celui-ci contient, ligne par ligne et  après les lignes de commentaires (qui commencent par \mlc{//}):
+\begin{itemize}
+\item le nombre de features
+\item pour chaque feature le nom de celle-ci et le nombre de valeurs possibles
+\item suivant le nom d'une feature, une ligne par valeur possible
+\item après la liste des features le nombre de classe
+\item le nom de chacune des classes, à raison d'un par ligne
+\end{itemize}
+On trouve aussi une fonction \mlc{data_set_t* read_data(char* data_filename, data_signature_t* signature)} qui initialise un data set à partir du contenu d'un fichier \mlc{.csv} donné en argument et de la signature de ces données.
+Sont aussi implémentées deux fonctions de libération de la mémoire réservée par les structures de data set (sauf la signature) et de signature.
+\subsection{Manipulation des data sets}
+\begin{enumerate}
+% - Séparation des données en deux ensemble: test et train
+\item Pour pouvoir évaluer le modèle appris à l'avenir, on souhaite pouvoir séparer un ensemble de données en deux, avec d'un côté les données utilisées pour construire le modèle et de l'autre celles utilisées pour évaluer le modèle. Implémentez une fonction \mlc{void random_split_data(data_set_t* initial_data_set, float fraction, data_set_t* training_set, data_set_t* validation_set)} qui initialise \mlc{training_set} et \mlc{validation_set} avec les données de \mlc{initial_data_set} et en répartissant aléatoirement les points du data set initial entre les deux nouveaux data sets. \mlc{fraction} indiquera la proportion du data set initial qui sera allouée pour l'ensemble d'apprentissage. Il n'est pas nécessaire de réaliser des copies de tous les points puisqu'un data set contient un tableau de pointeurs vers ces points. \mlc{training_set} et \mlc{validation_set} auront été préalablement obtenus via un \mlc{malloc} réservant la bonne quantité de mémoire.
+  % - Fonction de calcul de l'entropie d'un dataset: utilisation de maths.h et link ou plutôt code d'une fonction log via la relation log(x) = Taylor quand x < 2 et sinon 1+log(x/e)
+\item (Bonus) Implémentez une fonction de calcul approché du log en exploitant la relation \(\ln(x) = \ln(\frac{x}{e}) + 1= \ln(e\times x) -1\) et le développement limité de \(\ln(1+x)\) en 0. N'oubliez pas de tester cette fonction.
+\item Implémentez une fonction \mlc{double compute_entropy(data_set_t* d)} qui calcule l'entropie de l'ensemble passé en argument. Vous pourrez utiliser la fonction \mlc{log} via un \mlc{#include <math.h>}. Attention, l'utilisation de \mlc{<math.h>} nécessite d'ajouter \mlc{-lm} \underline{à la fin} de la commande de compilation.
+  % - Fonction de séparation d'un data set selon un attribut
+\item Pour pouvoir calculer le gain d'information lié à un attribut, il est nécessaire de pouvoir séparer un ensemble en fonction des valeurs que prend cet attribut (feature). Implémentez une fonction \mlc{data_set_t** split_data_set(data_set_t* initial_data_set, int feature_id)} qui renvoie un tableau de pointeurs vers des datasets correspondant à une partition du data set initial selon les valeurs de la feature dont l'id est donné en argument. Là encore, pas besoin de copier pleinement les points.
+  % - Fonction du gain d'entropie lié à une feature
+\item Implémentez une fonction \mlc{compute_information_gain(data_set_t* d, int feature_id)} qui calcule le gain d'information obtenu avec une partition selon les valeurs prises par \mlc{feature_id}.
+\item Implémentez une fonction \mlc{int best_information_gain(data_set_t* d, bool* unused_features)} qui cherche la feature qui maximise le gain d'information parmi celles qui n'ont pas déjà été utilisées. S'il n'est pas possible de trouver une feature qui maximise le gain d'information, cette fonction renverra \mlc{-1}.
+\end{enumerate}
+
+\section{Algorithme ID3}
+% - Struct d'arbre = attribut utilisé pour le test + tableau des fils + tableau des valeurs de l'attribut associées à chaque fils
+Pour construire un arbre de décision, on choisit d'utiliser la structure suivante:
+\begin{ccode}
+struct decision_tree_s {struct decision_tree_s** children; char* children_feature_value; data_set_t* data; int feature_id; char* feature_name; bool is_leaf; int predicted_class; char class_name;};
+typedef struct decision_tree_s decision_tree_t;
+\end{ccode}
+Cet enregistrement permet de représenter des arbres. Le champ \mlc{children} est un tableau de pointeurs vers d'autres arbres.
+Le champ \mlc{children_feature_value} établit une correspondance entre les enfants et la valeur de la feature sur laquelle ils ont été sélectionnés.
+Le champ \mlc{data_set} correspond à un data set contenant tous les points qui sont aux feuilles de cet arbre.
+Le champ \mlc{feature_id} est l'identifiant de la feature utilisée dans ce nœud pour répartir les points entre ses différents fils.
+\mlc{feature_name} est une chaîne de caractère qui est le nom de la feature dont l'id est \mlc{feature_id}.
+\mlc{is_leaf} indique si l'arbre courant est une feuille.
+\mlc{predicted_class} indique l'identifiant de la classe prédite pour l'arbre courant. C'est un champs qui n'est valide que si l'arbre courant est une feuille.
+\mlc{class_name} est un caractère correspondant à l'identifiant de la classe prédite.
+Quand le champ \mlc{is_leaf} est faux, \mlc{predicted_class}, \mlc{class_name} ne devront pas être accédés. Dans le cas contraire \mlc{children} devra valoir \mlc{NULL}, de même pour \mlc{children_feature_value}.
+Ainsi, \mlc{t->children[i]} contiendra tous les éléments de \mlc{t->data} pour lequel l'attribut d'identifiant \mlc{t->feature_id} vaut la \(i-ième\) valeur parmi toutes celles possibles pour cet attribut.
+\begin{enumerate}[resume]
+  % - Algorithme de construction d'un arbre ID3
+\item Implémentez une fonction \mlc{decision_tree_t* build_id3_tree(data_set_t* data_set)} qui construit un arbre de décision pour le data set donné en argument via l'algorithme ID3.
+\item Implémentez une fonction qui libère la mémoire réservée pour un tel arbre. Cette fonction ne libérera pas les points contenus dans les ensembles, uniquement les ensembles eux-mêmes, s'ils ne sont pas ceux de la racine.
+  % - Fonction de classification d'une entrée à partir d'un arbre
+\item Implémentez une fonction \mlc{int predict_class(decision_tree_t* id3_tree, data_value_t* input)} qui prédit la classe pour une entrée donnée à l'aide d'un arbre de décision.
+\item Implémentez une fonction \mlc{double compute_error(decision_tree_t* id3_tree, data_set_t* testing_set)} qui calcule l'erreur commise par l'arbre de décision sur un data set. Comment se comporte l'arbre que vous avez obtenu plus tôt du point de vue de l'erreur ?
+\begin{Warning}{}
+N'utilisez pas directement ce modèle pour déterminer si vous pouvez manger de véritables champignons que vous auriez ramassés !
+\end{Warning}
+% - Évaluation de l'arbre de décision: matrice de confusion
+\item (Bonus) Implémentez une fonction \mlc{double* compute_confusion_matrix(decision_tree_t* id3_tree, data_set_t* testing_set)} qui calcule une matrice de confusion liée à un arbre de décision sur un data set passé en argument.
+\item Estimez la fiabilité de l'arbre de décision appris pour la classification des champignons toxiques. Qu'en déduisez-vous ?
+% - Fonction d'affichage de l'arbre en plus ?
+\item (Bonus) Affichez l'arbre de décision obtenu.
+\end{enumerate}
+\end{document}
