@@ -1,0 +1,344 @@
+% \documentclass[a5paper, 12pt]{article}
+\documentclass[a4paper, 10pt]{article}
+
+%FOLD
+\usepackage[margin=0.5in,footskip=0.15in]{geometry}
+
+\usepackage[utf8]{inputenc}% gestion des accents (source)
+\usepackage[T1]{fontenc}% gestion des accents (PDF)
+\usepackage[french]{babel}% gestion du français
+\usepackage{textcomp}% caractères additionnels
+\usepackage{mathtools,amssymb,amsthm}% AMS + mathtools
+\usepackage{lmodern}% police de caractère
+
+\usepackage{hyperref}% gestion des hyperliens
+
+\usepackage{xcolor}% gestion des couleurs
+\usepackage{graphicx}% gestion des images
+\usepackage{minted}% coloration syntaxique
+
+\usepackage{colortbl} %coloration des tableaux
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\definecolor{bluebell}{rgb}{0.64, 0.64, 0.82}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+
+\usepackage{enumitem}% resume itemize
+
+\newminted{ocaml}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+\newminted{c}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+
+\newmintinline[mlc]{c}{style=tango, breaklines=true, autogobble}%Minted inLine in C
+\newmintinline[mlo]{ocaml}{style=tango, breaklines=true, autogobble}%Minted inLine in OCaml
+
+\usepackage{tikz}% figure (graphes, arbres)
+\usetikzlibrary{automata, positioning, arrows} %pour les automates finis
+
+\usepackage[framemethod=tikz]{mdframed}% environnements colorés
+
+\newenvironment{defEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={applegreen!05},
+    linecolor={applegreen!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Définition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{propEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={babyblueeyes!05},
+    linecolor={babyblueeyes!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Proposition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{exEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={gray!05},
+    linecolor={gray!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exemple}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{rqEnv}
+{
+  \mdfsetup{
+    topline=false,
+    leftline=false,
+    bottomline=false,
+    rightline=false,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerleftmargin=4pt,
+    backgroundcolor={gray!10},
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \textit{Remarque:}
+  }{\end{mdframed}}
+
+\newenvironment{exoEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={bluebell!05},
+    linecolor={bluebell!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exercice}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{proofEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Démonstration}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{Warning}[1]
+{
+  \mdfsetup{
+    roundcorner=1pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!70},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Attention !}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+
+\setlength{\parindent}{0pt}
+
+\newcounter{exocntr}
+\newcommand{\exoCommand}[1]{\stepcounter{exocntr} \textbf{Exercice \arabic{exocntr}}: #1 \newline}
+
+\newcommand{\Vrai}{1}
+\newcommand{\Faux}{0}
+%FOLD
+% Document start
+
+% \author{MP2I Descartes, Tours - Vladislav Tempez}
+\title{TP 14 - Code de Huffman}
+\begin{document}
+\maketitle
+L'objectif de ce TP est d'implémenter en C l'algorithme de Huffman pour compresser et décompresser du texte. Il se découpe de deux parties: la première concerne les arbres préfixes et la seconde concerne l'algorithme de Huffman lui-même.
+\section{Arbres préfixes}
+% arbres -> type dans le .h, type forcé
+L'objectif de cette partie est d'implémenter en C des arbres préfixes. Dans le cas présent, on compte se servir de ces arbres préfixes pour implémenter l'algorithme de Huffman, et on souhaite donc que l'arbre contienne les informations suivantes:
+\begin{itemize}
+\item Il s'agit d'un arbre binaire qui décrit le code associé à chaque caractère du texte. Par convention, on choisit que le fils gauche corresponde à l'ajout d'un \mlc{'0'} au code et le fils droit un \mlc{'1'}.
+\item Chaque feuille contient donc le caractère encodé par le code lu quand on descend jusqu'à cette feuille depuis la racine.
+\item Chaque feuille contient aussi un poids qui est le nombre d'occurrences du caractère (ou sa fréquence) dans le texte.
+\item Chaque nœud interne stocke un poids qui est la somme des poids des feuilles dans ses descendants.
+\end{itemize}
+
+En conséquence, vous vous appuierez sur la structure suivante pour manipuler les arbres préfixes:
+\begin{ccode}
+struct tree_s
+  {
+    int weight;
+    struct tree_s *left_child;
+    struct tree_s *right_child;
+    bool is_leaf;
+    char leaf_label;
+  };
+typedef struct tree_s tree_t;
+\end{ccode}
+Dans cette structure on retrouve tous les éléments attendus pour l'arbre préfixe détaillé plus haut. Le champ \mlc{is_leaf} permet de distinguer clairement entre les feuilles et les nœuds internes. Le champ \mlc{leaf_label} correspond au caractère présent aux feuilles. Dans un nœud interne, ce caractère peut valoir n'importe quoi et ne doit pas être utilisé.
+
+\begin{enumerate}
+\item Implémentez une fonction \mlc{tree_t* init_tree(char leaf_label, int weight)} qui crée un arbre réduit à une feuille pour un caractère donné en argument. Vous prendrez soin d'initialiser tous les champs, y compris les pointeurs vers les enfants avec une valeur adaptée. Cette fonction permet de créer les arbres associés à chaque caractère comme dans l'algorithme de Huffman.
+\item Implémentez une fonction \mlc{tree_t* merge_trees(tree_t* left_child, tree_t* right_child)} qui crée un nouvel arbre en fusionnant deux arbres, comme décrit dans l'algorithme de Huffman. Vous prendrez soin de spécifier la valeur adaptée pour chaque des champs de l'arbre créé.
+\item Implémentez une fonction d'affichage de ces arbres. Il n'est pas demandé un affichage avec une forme d'arbre, simplement de quoi vérifier ce que contient un arbre. Vous choisirez néanmoins judicieusement la manière dont vous affichez les informations.
+\item Implémentez une fonction \mlc{free_tree(tree_t* t)} qui libère la mémoire réservée par un arbre. Vous ferez attention à ce que toute la mémoire réservée et uniquement la mémoire réservée soit libérée.
+\item Testez les fonctions précédentes. Pour tester la libération correcte vous vous souviendrez des options de compilation adaptées.
+\item Implémentez une fonction \mlc{int tree_height(tree_t* t)} qui calcule la hauteur d'un arbre.
+\item Implémentez une fonction \mlc{int tree_size(tree_t* t)} qui calcule le nombre de nœuds dans un arbre.
+\item Testez ces fonctions.
+\end{enumerate}
+
+\section{(Bonus mais à lire) File de priorité}
+Pour implémenter l'algorithme de Huffman, une file de priorité est nécessaire. Celle-ci va contenir les arbres définis plus haut.
+Une implémentation des files de priorités est possible à l'aide de tas. C'est ce qui est proposé de faire dans cette section.
+Cette section est un bonus alors qu'une file de priorité est nécessaire pour la suite.
+Pour cette raison, une implémentation de file de priorité (mutable) pour les arbres est fournie avec le sujet. Si vous souhaitez réaliser ce bonus, ne lisez pas cette implémentation mais seulement son interface \mlc{heap.h}. Si vous ne comptez pas réaliser ce bonus, vous n'avez besoin que de l'interface pour la suite, mais il pourrait être intéressant de savoir comment vous auriez pu réaliser cette implémentation.
+% file de priorité
+L'implémentation fournie utilise la fonction \mlc{assert} qui est obtenue via \mlc{#include <assert.h>}. Cette fonction permet de vérifier une propriété: on lui donne une expression booléenne en argument, si cette expression est vraie, il ne passe rien, sinon le programme est interrompu.
+\begin{enumerate}[resume]
+\item (Bonus) Implémentez une file de priorité min contenant des arbres dont le type est décrit dans \mlc{tree.h} à l'aide de tas. Cette implémentation devrait fournir les fonctions dont la signature est décrite dans le fichier d'interface \mlc{heap.h}. Vous pourrez bien entendu vous appuyer de fonction auxiliaire dont il n'est pas nécessaire qu'elles apparaissant dans le fichier d'interface.
+\end{enumerate}
+
+\section{Algorithme de Huffman}
+\subsection{Préliminaire}
+En raison du nombre important de fonctions qui vont interagir ici et de leur groupement par objet, il est particulièrement adapté de séparé son code en plusieurs fichiers. Le premier fichier (ou module) concerne l'implémentation des arbres. Le second sera pour l'implémentation de la file de priorité et le troisième pour l'algorithme de Huffman proprement dit.
+Vous aurez donc l'organisation suivante:
+\begin{itemize}
+\item L'implémentation des arbres sera réalisée dans \mlc{tree.c} avec l'interface associée \mlc{tree.h}.
+\item L'implémentation de file de priorité sur les arbres sera dans \mlc{heap.c} avec l'interface \mlc{heap.h}.
+\item L'implémentation de l'algorithme de Huffman sera dans \mlc{huffman.c} et \mlc{huffman.h}.
+\end{itemize}
+Pour l'organisation du code entre \mlc{.c} et \mlc{.h} vous pourrez revenir aux TP précédents.
+\smallbreak
+Ici on peut remarquer le point suivant: \mlc{huffman} a besoin de \mlc{tree} et \mlc{heap}, \mlc{heap} a besoin de \mlc{tree}. Lors de l'inclusion des dépendances, \mlc{heap} va donc inclure \mlc{tree} puis \mlc{huffman} va intégrer \mlc{tree} et \mlc{heap} (et donc \mlc{tree} une deuxième fois). Ceci va donc poser des problèmes de double définition pour les éléments de \mlc{tree}.
+\smallbreak
+Pour prévenir ces problèmes, vous allez implémenter une \emph{condition de garde} pour l'inclusion de manière à rendre celle-ci \emph{idempotente} c'est-a-dire que son inclusion n'aura lieu que la première fois.
+\smallbreak
+Ceci est réalisé exclusivement dans le fichier d'interface (\mlc{.h}) et utilise les directives préprocesseur \mlc{#define}, \mlc{#ifndef} \mlc{#endif}. L'idée est la suivante: lors de la première inclusion d'un fichier interface, le processus de compilation va stocker l'information selon laquelle cette inclusion a été réalisée à l'aide de la directive \mlc{#define NOM_DE_VARIABLE}. Avant d'inclure le fichier, il testera l'existence de \mlc{NOM_DE_VARIABLE} et pourra donc savoir si l'inclusion a déjà été réalisée via la directive \mlc{#ifndef NOM_DE_VARIABLE}. Ceci permet de ne tenir compte de ce qui vient après que dans le cas où l'inclusion n'avait pas été réalisée auparavant. Son effet s'arrête avec la directive \mlc{#endif}.
+\smallbreak
+Pour rendre l'inclusion idempotente, il suffit d'encadrer le contenu du fichier d'interface par:
+\begin{ccode}
+#ifndef INTERFACE_H
+#define INTERFACE_H
+//contenu du .h
+#endif
+\end{ccode}
+\mlc{INTERFACE_H} est un nombre de variable qui doit être adapté et unique à chaque fichier d'interface. Une convention est d'utiliser le nom du fichier d'interface en capitales suivi d'un \mlc{_H}. Par exemple dans le fichier d'interface des files de priorité on peut voir:
+\begin{ccode}
+#ifndef HEAP_H
+#define HEAP_H
+//...
+#endif
+\end{ccode}
+\begin{enumerate}[resume]
+\item Organisez le code implémenté jusque-là de la manière indiquée plus haut.
+\item (Bonus) Écrivez un fichier \mlc{Makefile} pour organiser la compilation séparée de tous ces fichiers.
+\item Écrivez un programme séparé ne contenant qu'une fonction \mlc{main} et incluant les modules \mlc{huffman}, \mlc{heap} et \mlc{tree} et déplacez les tests des fonctions de ces modules dans la fonction \mlc{main}. Les sources (\mlc{.c}) des modules \mlc{huffman}, \mlc{tree} et \mlc{heap} ne devront pas contenir de fonction \mlc{main}.
+\end{enumerate}
+\subsection{Algorithme de Huffman}
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlc{int* count_occurences(char* text)} qui renvoie un tableau contenant pour chaque caractère le nombre d'occurrences de ce caractère dans le texte: la case \mlc{i} du tableau contiendra la nombre d'occurrences du caractère numéro \mlc{i} (dans l'ordre ASCII).
+\item Implémentez une fonction \mlc{heap_t* build_heap_from_text(char* text)} qui renvoie une file de priorité contenant les arbres feuilles tels que décrite par l'algorithme de Huffman. Dans cette question vous pourrez, temporairement, ne pas vous préoccuper des fuites mémoire.
+\item Implémentez une fonction \mlc{tree_t* build_code_from_heap(heap_t* heap)} qui calcule l'arbre correspondant au code de Huffman à partir de la file de priorité initialisée à la question précédente. Dans cette question vous pourrez à nouveau vous préoccuper de libérer correctement la mémoire réservée.
+\item Implémentez une fonction \mlc{char** code_from_tree(tree_t* huffman_tree)} qui renvoie un tableau de chaînes de caractères contenant les codes associés à chaque caractère. La case \mlc{i} contiendra une chaîne de caractère égale au code associé au caractère numéro \mlc{i} dans l'ordre ASCII. (indication) Vous pourrez pour ceci passer par une fonction récursive qui remplit un tableau à l'aide d'un arbre et d'un code courant contenant le chemin depuis la racine de l'arbre de Huffman à l'arbre courant.
+\item Implémentez une fonction \mlc{char* encode(char* text, tree_t* huffman_tree)} qui encode/compresse un texte à l'aide de son arbre de Huffman. Vous prendrez soin de dimensionner correctement la chaîne de caractère contenant le résultat.
+\item Implémentez une fonction \mlc{char* decode(char* compressed_text, tree_t* huffman_tree)} qui décode un texte compressé à l'aide de son arbre de Huffman. (indication) Vous pourrez implémenter pour ceci une fonction récursive qui lit le caractère suivant en descendant dans l'arbre.
+\item Testez ces fonctions sur un texte de votre choix et vérifiez que la compression puis la décompression est bien sans pertes.
+\end{enumerate}
+\subsection{Pour aller plus loin}
+Maintenant qu'on a implémenté le cœur de l'algorithme, il reste une question importante à traiter: pourrait-on vraiment se servir de cet algorithme pour compresser des textes ? Pour répondre à cette question, cette partie propose d'implémenter les étapes suivantes à savoir:
+\begin{itemize}
+\item Compresser un texte directement écrit dans un fichier
+\item Écrire dans un fichier les informations concernant le code utilisé pour compresser le texte
+\item Lire ce code dans un fichier
+\item Décoder directement un fichier
+\item Comparer la place occupée par les versions compressées et non compressées.
+\end{itemize}
+\begin{enumerate}[resume]
+% écriture de l'arbre
+\item Implémentez une fonction \mlc{void write_tree(tree_t* t, char* filename)} qui écrit un arbre dans un fichier. (indication) Vous pourrez vous appuyer sur une fonction récursive auxiliaire pour réaliser ceci. Vous prendrez soin que cette fonction inscrive dans le fichier de manière à pouvoir reconstruire d'arbre par la suite. Cette fonction fera partie du module \mlc{tree}.
+% lecture de l'arbre
+\item Implémentez une fonction \mlc{tree_t* read_tree(char* filename)} qui reconstruit un arbre à partir de sa version écrite dans un fichier. Vous pourrez vous servir des propriétés de caractérisation des parcours d'arbres. Cette fonction fera partie du module \mlc{tree}.
+% lecture du fichier en chaîne
+\item Implémentez une fonction \mlc{char* read_file_as_string(char* filename)} qui lit le contenu d'un fichier et renvoie ce contenu sous la forme d'une chaîne de caractère. Vous prendrez soin de bien dimensionner la taille de la chaîne dans laquelle stocker la valeur de retour. Cette fonction fera partie d'un nouveau module \mlc{io}.
+% écriture du fichier depuis chaîne
+\item Implémentez une fonction \mlc{void write_content_to_file(char* filename, char* content)} qui écrit une chaîne de caractère dans un fichier. Cette fonction fera partie du module \mlc{io}.
+% wrap up avec encodage depuis source et décodage depuis source
+\item À l'aide des fonctions précédentes, implémentez une fonction \mlc{void encode_from_file(char* src_filename, char* dst_filename, char* tree_filename);} qui lit un texte, le compresse et écrit ce texte compressé dans un fichier dont le nom est \mlc{dst_filename} et écrit l'arbre du code dans un fichier séparé. On choisira d'écrire les bits du code sous forme de \mlc{char} (\mlc{'0'} ou \mlc{'1'}) que directement sous forme binaire. Cette fonction fera partie du module \mlc{huffman}.
+\item Faites de même pour une fonction \mlc{void decode_from_file(char* src_filename, char* dst_filename, char* tree_filename)} qui lit un texte compressé dans le fichier \mlc{src_filename} et écrit une version décompressée de ce texte dans un fichier \mlc{dst_filename} en ayant lu l'arbre pour le décoder dans le fichier \mlc{tree_filename}.
+\item Testez vos fonctions sur un petit texte.
+% construction du code - avec le texte de Jules Verne -> non, texte en anglais !
+\item Testez vos fonctions sur le texte \mlc{long_text.txt} fourni avec le code.
+% Comparaison des poids et limite encodage direct des bits
+\item Que dire des poids du fichier obtenu après compression par rapport au poids pré-compression ? Est-ce attendu ? Comment pourrait-on estimer le taux de compression réel ? Dans quelle mesure la description de l'arbre contenant le code vient modifier ce taux de compression ?
+\end{enumerate}
+\end{document}
