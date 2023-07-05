@@ -1,0 +1,394 @@
+% \documentclass[a5paper, 12pt]{article}
+\documentclass[a4paper, 10pt]{article}
+
+%FOLD
+\usepackage[margin=0.5in,footskip=0.15in]{geometry}
+
+\usepackage[utf8]{inputenc}% gestion des accents (source)
+\usepackage[T1]{fontenc}% gestion des accents (PDF)
+\usepackage[french]{babel}% gestion du français
+\usepackage{textcomp}% caractères additionnels
+\usepackage{mathtools,amssymb,amsthm}% AMS + mathtools
+\usepackage{lmodern}% police de caractère
+
+\usepackage{hyperref}% gestion des hyperliens
+
+\usepackage{xcolor}% gestion des couleurs
+\usepackage{graphicx}% gestion des images
+\usepackage{minted}% coloration syntaxique
+
+\usepackage{colortbl} %coloration des tableaux
+\definecolor{applegreen}{rgb}{0.55, 0.71, 0.0}
+\definecolor{babyblueeyes}{rgb}{0.63, 0.79, 0.95}
+\definecolor{bluebell}{rgb}{0.64, 0.64, 0.82}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+
+\usepackage{enumitem}% resume itemize
+
+\newminted{ocaml}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+\newminted{c}{
+  style=tango,
+  fontsize=\small,
+  escapeinside=~~, %disables ~ symbol as a side effect
+  mathescape=true,
+  numbersep=2pt,
+  linenos=true,
+  autogobble,
+  breaklines=true,
+  frame=leftline,
+  xleftmargin=1mm,
+  framesep=1.5mm}
+
+
+\newmintinline[mlc]{c}{style=tango, breaklines=true, autogobble}%Minted inLine in C
+\newmintinline[mlo]{ocaml}{style=tango, breaklines=true, autogobble}%Minted inLine in OCaml
+
+\usepackage{tikz}% figure (graphes, arbres)
+\usetikzlibrary{automata, positioning, arrows} %pour les automates finis
+
+\usepackage[framemethod=tikz]{mdframed}% environnements colorés
+
+\newenvironment{defEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={applegreen!05},
+    linecolor={applegreen!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Définition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{propEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={babyblueeyes!05},
+    linecolor={babyblueeyes!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Proposition}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{exEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={gray!05},
+    linecolor={gray!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exemple}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{rqEnv}
+{
+  \mdfsetup{
+    topline=false,
+    leftline=false,
+    bottomline=false,
+    rightline=false,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerleftmargin=4pt,
+    backgroundcolor={gray!10},
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \textit{Remarque:}
+  }{\end{mdframed}}
+
+\newenvironment{exoEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={bluebell!05},
+    linecolor={bluebell!40},
+    linewidth=0.1pt,
+    nobreak=true,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Exercice}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{proofEnv}[1]
+{
+  \mdfsetup{
+    roundcorner=3pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!40},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Démonstration}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+\newenvironment{Warning}[1]
+{
+  \mdfsetup{
+    roundcorner=1pt,
+    topline=true,
+    leftline=true,
+    bottomline=true,
+    rightline=true,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    innerrightmargin=4pt,
+    innerlinewidth=2pt,
+    backgroundcolor={burgundy!05},
+    linecolor={burgundy!70},
+    linewidth=0.1pt,
+  }
+  \begin{mdframed}[]
+    \hfill \textbf{Attention !}\newline
+    \textbf{#1}\newline
+  }{\end{mdframed}}
+
+
+\setlength{\parindent}{0pt}
+
+\newcounter{exocntr}
+\newcommand{\exoCommand}[1]{\stepcounter{exocntr} \textbf{Exercice \arabic{exocntr}}: #1 \newline}
+
+\newcommand{\Vrai}{1}
+\newcommand{\Faux}{0}
+%FOLD
+% Document start
+
+% \author{MP2I Descartes, Tours - Vladislav Tempez}
+\title{TP 17 - diff}
+\begin{document}
+\maketitle
+\section{diff}
+% Outil et usage
+% diff -u: en vert ce qui a été ajouté et en rouge ce qui a été retiré
+L'outil \mlc{diff} permet de visualiser les changements entre deux fichiers texte. Il est en particulier très utilisé par les systèmes de versionnement de fichiers comme \mlc{git} qui décrivent un fichier comme une succession des modifications à partir d'un état initial. Cette approche permet de garder en mémoire les versions successives du fichier (son historique), et est très pratique si on veut revenir en arrière sur des modifications passées.
+C'est l'usage de \mlc{diff} qui permet de déterminer quelles sont les modifications qui permettent de passer d'une version à la suivante.
+Vous pouvez utiliser \mlc{diff} en ligne de commande avec la syntaxe suivante: \mlc{diff -u <fichier_1> <fichier_2>}.
+\begin{enumerate}
+\item Testez \mlc{diff} sur deux fichiers de votre choix ne différant que très peu.
+\end{enumerate}
+\section{Tables de hachage}
+Dans cette section on s'intéresse à l'implémentation d'une table de hachage pour servir de dictionnaire dans la suite.
+% Implémentation des tables de Hachage: Structure = tableau + remplissage actuel + fonction de Hash sur des entiers
+Une table de hachage consiste en deux éléments principaux: un tableau contenant les couples clé/valeurs contenus dans le dictionnaire et une fonction de hachage qui indique dans quelle case placer un couple clé/valeur.
+Dans ce TP les collisions seront gérées à l'aide de listes: une case du tableau contiendra une liste des couples clé/valeurs dont l'image est identique par la fonction de hachage.
+On utilise donc le type suivant pour une fonction de hash dont les clés sont de type \mlo{'a} et les valeurs de type \mlo{'b}:\\
+\mlo{type ('a, 'b) hash_table = {data: ('a * 'b) list array; hash_function : 'a -> int}}\\
+\mlo{data} est le tableau contenant les couples clé/valeur et \mlo{hash_function}  est la fonction de hachage à utiliser pour déterminer la case associée à une clé.
+On attend d'une table de hachage l'interface suivante:
+\begin{itemize}
+\item \mlo{init_hash_table : int -> ('a -> int) -> ('a,'b) hash_table} qui initialise une table à partir de la taille du tableau et de la fonction de hachage.
+\item \mlo{member : 'a -> ('a, 'b) hash_table -> bool} qui détermine l'existence d'une valeur associée à une clé dans une table.
+\item \mlo{get_value : 'a -> ('a, 'b) hash_table -> 'b option} qui renvoie la valeur associée à la clé dans la table si elle existe via un type option.
+\item \mlo{add_value : 'a -> 'b -> ('a, 'b) hash_table -> unit} qui ajoute un couple clé/valeur dans la table. S'il existe déjà un élément associé à la clé, la fonction lève une exception
+\item \mlo{remove_element : 'a -> ('a, 'b) hash_table -> unit} qui supprime un couple associé à une clé dans la table. S'il n'y a aucun élément associé à cette clé dans la table, la fonction lève une exception
+\end{itemize}
+% Interface: init get, member, add, remove, (bonus iter) (avec redimensionnement)
+\begin{enumerate}[resume]
+\item Implémentez les fonctions de l'interface.
+\item (Bonus) Implémentez une fonction \mlo{iterate: ('a,'b) hash_table ->('a,'b) list} qui renvoie la liste de tous les couples clé valeurs présents dans la table.
+\item (Bonus) Implémentez une fonction \mlo{replace} qui remplace la valeur associée à une clé dans une table, et l'ajoute si aucune valeur n'était associée à cette clé.
+\item (Bonus) Implémentez un mécanisme de redimensionnement de la table quand celle-ci contient trop ou trop peu d'éléments. Vous préciserez les conditions de déclenchement de ce mécanisme et prendrez soin de modifier la fonction de hachage en conséquence.
+  % Tests de base
+\item On souhaite tester ces fonctions avec une table dont les clés sont des \mlo{int} et les valeurs sont des \mlo{int}. Le code suivant implémente une fonction de hachage qui ramène la clé dans les indices valides du tableau via un modulo. Le double modulo permet de gérer les nombre négatifs et \mlo{size} est le nombre de cases de la table. Testez les fonctions de l'interface de la table.
+  \begin{ocamlcode}
+    let simple_hash_fn size key = ((key mod size) + size) mod size
+  \end{ocamlcode}
+\end{enumerate}
+On souhaite générer de manière pseudo aléatoire des fonctions de hachage pour initialiser une table afin que deux clés de même modulo ne soient pas nécessairement hachées de la même manière et que chaque table n'utilise pas nécessairement la même fonction de hachage.
+On se propose donc de choisir une fonction de hachage de manière aléatoire dans un ensemble de fonctions de hachage.
+On se fixe un entier premier \(p\) plus grand que la taille de la table. On note \(H = \{h_{a,b}|(a,b)\in~\mathbb{Z}/p\mathbb{Z},~a>0\}\) où \(h_{a,b} = x \mapsto (ax + b)[p]\) et \(\mathbb{Z}/p\mathbb{Z}\) est l'ensemble \(\mathbb{Z}\) quotienté par la relation d'équivalence "égal modulo p".\\
+Choisir une fonction au hasard dans \(H\) revient donc à choisir au hasard un couple \(a,b\) qui convient.
+
+\begin{rqEnv}
+ Cette famille de fonction de hachage intervient dans la méthode de construction de tables de hachage appelée \emph{hachage parfait} et qui garantit un temps d'accès moyen constant pour l'ajout, la suppression et la récupération des éléments d'un dictionnaire. Cette méthode demande cependant de savoir à l'avoir quelles seront les clés qui seront utilisées lors de l'utilisation de la table.
+\end{rqEnv}
+
+Vous pourrez obtenir un nombre pseudo aléatoire via la fonction \mlo{Random.int : int -> int} qui donne un entier entre 0 et l'argument (exclu) donné à la fonction.
+
+Ce générateur pseudo aléatoire peut être initialisé avec une graine particulière via la fonction \mlo{Random.init: int -> unit}. Il peut être utilisé avec une graine pseudo aléatoire sur la base de l'état de la machine au moment de l'exécution avec la fonction \mlo{Random.self_init : unit -> unit}
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlo{sample_hash_fn: int -> (int -> int)} qui choisit au hasard une fonction de \(H\) pour un \(p\) donné.
+\item On modifie ensuite cette fonction pour ramener son image à un indice valable. Pour ça on peut directement lui appliquer \mlo{simple_hash_fn}. Implémentez une fonction \mlo{gen_hash_fn : int  -> (int -> int)} qui calcule la fonction qui sera utilisée par une table dont la taille est donnée en argument.
+\item Testez les fonctions d'interface et cette nouvelle fonction de hachage.
+\item (Bonus) Implémentez une fonction de hachage quand les clés sont des mots. Attention aux dépassements de capacité.
+% Fonction de hash pour des mots -> test de base
+\item (Bonus) Testez les tables de hachage dont les clés sont des mots.
+\end{enumerate}
+% Fibonacci récursif avec mémoïsation via cette table
+Les tables de hachage permettent, via leur usage comme dictionnaire, d'implémenter des approches par mémoïsation. Le calcul de la suite de Fibonacci n'est pas réellement un problème de programmation dynamique, mais on pourrait le considérer comme tel à la marge: les sous problèmes à résoudre pour le calcul de \(f_{n+2}\) sont les calculs de \(f_{n+1}\) et \(f_n\). Il y a bien entendu chevauchement entre ces sous problèmes.
+\begin{enumerate}[resume]
+\item En donnant une majoration et une minoration de chacune des branches de l'arbre d'appel, rappelez la complexité d'un calcul de \(f_n\) récursif. Comparez ce résultat au nombre de sous problèmes différents nécessaires pour ce calcul de \(f_n\).
+\item L'approche par mémoïsation permet d'éviter ce chevauchement en notant le résultat des calculs déjà réalisés dans un dictionnaire (ici implémenté par une table de hachage). Implémentez une fonction qui calcule le \(n\)-ième terme de la suite de Fibonacci avec mémoïsation.
+\item Comparez le résultat avec une implémentation récursive naïve (sans mémoïsation) (pour \(n=42\) vous devriez voir une différence).
+\end{enumerate}
+% Hastbl fonctionnement et exemples
+OCaml fournit un module \mlo{Hashtbl} qui permet l'utilisation directe de tables de hachage sans avoir besoin de fournir la fonction de hachage et dont l'interface est la suivante:
+\begin{itemize}
+\item \mlo{create : int -> ('a, 'b) t} qui crée une table de taille spécifiée. La taille de la table est mise à jour automatiquement si nécessaire.
+\item \mlo{add : ('a, 'b) t -> 'a -> 'b -> unit} qui ajoute un couple clé valeur à la table passée en argument.
+\item \mlo{find : ('a, 'b) t -> 'a -> 'b} qui renvoie la valeur associée à la clé passée en argument et lève une exception quand aucune valeur n'est associée à la clé dans cette table.
+\item \mlo{mem : ('a, 'b) t -> 'a -> bool} qui vérifie si une valeur est associée à une clé dans la table.
+\item \mlo{remove : ('a, 'b) t -> 'a -> unit} qui supprime le couple clé/valeur de la table. Attention, si jamais lors d'une utilisation de \mlo{add} le couple clé/valeur est déjà présente dans la table, un second couple est ajouté, masquant le premier. \mlo{remove} ne supprimera que le dernier couple, levant le masquage. Par exemple:
+  \begin{ocamlcode}
+    let _ = Hashtbl.add table key_1 value_1
+    let _ = Hashtbl.add table key_1 value_2
+    let _ = Hashtbl.remove table key_1
+    let a = Hashtbl.mem table key_1
+  \end{ocamlcode}
+  va associer la valeur \mlo{true} à \mlo{a}: après ces opérateurs, il existe une valeur associée à \mlo{key_1} dans \mlo{table} et c'est \mlo{value_1}.
+  Si la clé n'est pas présente dans la table, rien ne se passe.
+\item \mlo{replace : ('a, 'b) t -> 'a -> 'b -> unit} Qui remplace la valeur associée à la clé donnée si elle est présente et sinon ajoute le couple clé/valeur à la table.
+\item \mlo{iter : ('a -> 'b -> unit) -> ('a, 'b) t -> unit} qui permet d'appliquer une fonction à tous les couples clé/valeur de la table. Par exemple dans le code suivant, on utilise iter pour afficher tous les couples clé/valeur d'une table dont les clés sont des \mlo{string} et les valeurs des \mlo{int}:
+  \begin{ocamlcode}
+    let print_key_and_value key value =
+      Printf.printf "%s %d\n" key value
+    let table = (Hashtbl.create 5)
+    let _ = Hashtbl.add table "cinq" 5
+    let _ = Hashtbl.add table "sept" 7
+    let _ = Hashtbl.iter (print_key_and_value) table
+  \end{ocamlcode}
+\end{itemize}
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlo{symmetry : (int,int) Hashtbl.t -> unit} qui prend une table dont les clés sont des entiers et les valeurs égales aux clés et fait en sorte que dans cette table, si la clé \(k\) est présente, la clé \(-k\) est aussi présente.
+\end{enumerate}
+\section{Distance d'édition}
+% Ou de Levenshtein: dans sa définition originale permet aussi les substitutions
+La \emph{distance d'édition} ou distance de \emph{Levenshtein} est une distance sur l'ensemble des mots qui compte le nombre minimal d'opérations pour passer d'un mot à un autre. Dans le cas général cette distance permet les opérations suivantes:
+\begin{itemize}
+\item Suppression d'une lettre
+\item Insertion d'une lettre
+\item Substitution d'une lettre par une autre sous conditions
+\end{itemize}
+Il est courant que ces opérations soient associées à un coût, la distance d'édition correspond alors au coût minimal pour passer d'un mot à un autre. On peut remarquer que la substitution d'une lettre par une autre doit avoir un coût inférieur à la succession d'une insertion puis d'une suppression si on souhaite que cette action de substitution soit utilisée, sinon, il suffit de supprimer la lettre concernée puis de la remplacer par la lettre voulue pour opérer une substitution à l'aide des deux autres opérations.
+Cette valeur vérifie bien les propriétés attendues d'une fonction de distance (cf le DS6, sous conditions de symétrie sur les coûts de substitution).\\
+Dans ce TP, nous ne nous intéresserons pas à la substitution qu'on considérera impossible. Dans ce cas, la distance d'édition se confond avec le problème de \emph{plus longue sous séquence commune} qui consiste à trouver le plus long sous mot commun à deux mots. On passe alors du premier mot au second en supprimant toutes les lettres nécessaires pour obtenir la plus longue sous séquence commune, puis en insérant toutes les lettres pour obtenir le second mot à partir de cette plus longue sous séquence commune.
+% Définition sous mot = sous suite du mot != facteur -> exemple
+On rappelle que la définition d'un sous-mot d'un mot \(w\) est un mot \(w'\) dont les lettres sont une sous suite des lettres de \(w\). Ainsi, un facteur est un sous mot, mais un sous-mot n'est pas nécessairement un facteur. \(abed\) est un sous mot de \(abcded\) mais ce n'est pas un de ses facteurs.
+% Calcul via programmation dynamique: on compare la calcule sur les préfixes en prenant la meilleure option
+% - Supprimer la dernière lettre du premier mot
+% - Ajouter la dernière lettre au second mot
+% - Si elles sont égales ne pas y toucher et regarder considérer les deux préfixes stricts
+% (- Insertion puis suppression déjà gérée par les deux premières options)
+% On obtient comme ça le nombre de changement
+On peut calculer cette distance d'édition entre deux mots \(x\) et \(y\) par programmation dynamique: les sous problème consistent à calculer la distance d'éditions sur les préfixes de taille \(i\) et \(j\) et \(x\) et \(y\) notés \(x_i\) et \(y_j\) et à ne pas confondre avec \(x[i]\) et \(y[j]\) qui sont les lettres numéro \(i\) et \(j\) de \(x\) et \(y\). On a donc \((|x|+1)*(|y|+1)\) sous problème distincts. On peut déduire la distance d'édition dans un cas à partir de sa valeur sur trois sous problèmes particuliers en remarquant que c'est le plus petit nombre d'opération parmi les cas suivants
+\begin{itemize}
+\item Si \(i = 0\), il faut insérer toutes les lettres, la distance est donc \(j\), idem si \(j=0\) il faut supprimer toutes les lettres.
+\item Si \(x[i-1] = y[j-1]\), les deux dernières lettres de \(x_i\) et \(y_j\) sont égales et on peut garder cette lettre et continuer en calculant la distance entre les préfixes de taille \(i-1\) et \(j-1\) de \(x\) et \(y\).
+\item On peut supprimer la \(i\)-ième lettre de \(x\) qui est la dernière lettre du préfixe de taille \(i\) puis calculer la distance entre les préfixes de taille \(i-1\) et \(j\)
+\item On peut aussi ajouter la \(j\)-ième lettre à \(y\) qui est la dernière lettre du préfixe de taille \(j\) de \(y\) puis calculer la distance entre les préfixes de taille \(i\) et \(j-1\)
+\end{itemize}
+En notant \(d_{i,j}\) la distance entre les préfixes de taille \(i\) de \(x\) et \(j\) de \(y\) on a la relation suivante:
+\[d_{0,j} = j, d_{i,0} = i\]
+\[d_{i,j} = \min(1+d_{i-1,j}, 1+d_{i,j-1}, d_{i-1,j-1}) \text{ si \(x[i-1] = x[j-1]\)}\]
+\[\min(1+d_{i-1,j}, 1+d_{i,j-1}, d_{i-1,j-1}) \text{ sinon}\]
+
+Pour des raisons explicitées plus tard, on choisit de représenter les mots par la liste de leurs caractères, dans l'ordre inverse, le dernier caractère étant donc en tête de liste.
+% Implémenter récursivement avec mémoïsation en se servant de Hashtbl
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlo{string_to_list: string -> char list} qui renvoie la liste des caractères de ce mot dans l'ordre inverse: le dernier caractère est en tête de liste.
+\item Implémentez une fonction \mlo{edit_distance: 'a list -> 'a list -> int} qui calcule la distance d'édition entre deux mots en utilisant la mémoïsation pour ne pas refaire les calculs plusieurs fois.
+  La table utilisée pour la mémoïsation aura alors comme clé le couple de préfixes \(x_i,y_j\) indiquant les préfixes courants et représentés sous forme de listes de caractères, et comme valeur la distance minimale de \(x_i\) à \(x_j\).
+\end{enumerate}
+% On peut garder trace des lettres conservées, ajoutées ou supprimées via le choix effectué lors du min
+On peut en plus garder trace des opérations utilisées pour obtenir cette distance: lors du calcul de \(d_{i,j}\) on sait quelle est l'opération utilisée, on peut donc noter la nature de cette opération dans une seconde table de hachage et déduire la case vers laquelle mène cette opération. On peut ainsi remonter la liste des opérations qui permettent de passer de \(y\) à \(x\).
+\begin{enumerate}[resume]
+\item Sur la base du code précédent, notez dans une seconde table les opérations nécessaires. On pourra représenter ces opérations par le type \mlo{type op = Insertion | Deletion | Identity |End}. La table aura alors comme clé le couple \(x_i,y_j\) indiquant les préfixes courants, et comme valeur des  \mlo{op} où \mlo{op} correspond à la première opération appliquée pour passer de \(x_i\) à \(y_j\) avec le nombre minimal d'opérations. \mlo{End} correspond au cas spécifique des préfixes réduits au mot vide, c'est le cas où on a fini.
+\item Implémentez une fonction \mlo{get_op_list} qui récupère la liste des opérations retenues et le caractère modifié par l'opération à partir de la seconde table contenant les opérations.
+\item (Bonus) à partir de la liste précédente, affichez le processus de transformation d'un mot \(x\) vers \(y\).
+\end{enumerate}
+\section{Implémentation de diff}
+% Principe de diff -> distance d'édition sur les lignes
+\mlo{diff} consiste en fait à calculer la distance d'édition sur les lignes d'un texte plutôt que sur les caractères.
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlo{text_to_lines} qui calcule la liste des lignes qui composent ce texte. Vous pourrez utiliser judicieusement \mlo{String.sub: string -> int -> int} qui permet d'extraire la sous-chaîne d'une chaîne à l'aide de sa position de départ et de sa longueur. \mlo{String.sub "aabaa" 2 1} renvoie la chaîne \mlo{"b"}.
+% Reprendre l'algorithme précédent pour gérer des listes de strings plutôt que des strings
+\item Adaptez le code calculant la distance d'édition sur des listes de mots pour calculer des distances d'éditions sur des listes de lignes. Vous prendrez soin de calculer aussi la liste des opérations.
+\item Implémentez une fonction d'affichage similaire à \mlc{diff} qui affiche dans l'ordre croissant des lignes les éléments insérés, supprimés et identiques. Devant les lignes insérées vous afficherez un \(+\), devant les lignes supprimées un \(-\) et devant les identiques un \(=\).
+\item Testez la fonction sur des petits exemples
+\end{enumerate}
+On souhaite maintenant transformer cette fonction en un exécutable qui affiche la différence et peut être appelé directement sur des fichiers depuis le terminal.
+\begin{enumerate}[resume]
+\item Implémentez une fonction \mlo{lines_from_file} qui renvoie la liste des lignes contenues dans un fichier. Vous pourrez vous rappeler le TP 10 pour ce qui concerne la lecture de fichiers.
+\end{enumerate}
+% argc argv en OCaml
+En OCaml, les arguments de la ligne de commande sont stockés dans le tableau \mlo{Sys.argv}. Ce sont bien entendu des chaînes de caractères qu'il faut convertir dans le type adéquat si besoin, et comme en C, le premier de ces arguments est le nom du programme. Ainsi le programme suivant (contenu dans un fichier \emph{args.ml}), compilé avec la commande \mlo{ocamlop -o args.exe args.ml} et executé avec la commande \mlo{./args.exe arg_1 arg_2} affiche:
+\begin{ocamlcode}
+let _ = for i = 0 to Array.length (Sys.argv) -1 do
+  Printf.printf "Argument %d: %s\n" i Sys.argv.(i)
+done
+\end{ocamlcode}
+\begin{ocamlcode}
+Argument 0: args.exe
+Argument 1: arg_1
+Argument 2: arg_2
+\end{ocamlcode}
+% Compilation et utilisation des arguments de la ligne de commande
+\begin{enumerate}[resume]
+\item Implémentez un programme qui calcule la \mlo{diff} entre deux fichiers dont les noms sont passés via la ligne de commande.
+\item Comparez les résultats obtenus à ceux de la commande \mlc{diff}.
+\end{enumerate}
+\end{document}
