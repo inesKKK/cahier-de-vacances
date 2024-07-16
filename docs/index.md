@@ -125,3 +125,7 @@ Deux TP sur le programme de 2e année (IA)
   -[Correction](Descartes/TP/TP20_ID3/Correction_TP20.zip)
 
 - [TP sur l'algorithme de classification hiérarchique ascendante pour la reconstruction d'arbres phylogénétiques en OCaml](Descartes/TP/TP21_Pingouins/TP21.pdf) ([Code compagnon et données](Descartes/TP/TP21_Pingouins/CodeCompagnonEtDonnees.zip) [Correction](Descartes/TP/TP21_Pingouins/Corrige/corrige.ml))
+
+### MP2I du Lycée Lesage
+
+Les polys de cours, TD, TP et corrigés de l'année sont [ici](https://plescornet-drive.mytoutatice.cloud/public?sharecode=fTP0zuH6NBSv). Il y a aussi un [DS](Lesage/ds6_etudiant.pdf) avec un exercice de manipulation de formules sous forme normale conjonctive, avec la résolution gloutonne de la satisfaisabilité de formules d'Horn.
