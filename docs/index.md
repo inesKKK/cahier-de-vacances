@@ -1,7 +1,7 @@
-## Cahier de vacances ... en route vers la MPI(*) - été 2024
+## Cahier de vacances ... en route vers la MPI(*) - été 2025
 
 Cette liste d'énoncés est proposée par plusieurs enseignants
-d'informatique de diverses MP2I 2021-2022, 2022-2023 et 2023-2024.
+d'informatique de diverses MP2I 2021-2022, 2022-2023, 2023-2024 et 2024-2025.
 
 
 
