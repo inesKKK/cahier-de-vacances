@@ -129,3 +129,24 @@ Deux TP sur le programme de 2e année (IA)
 ### MP2I du Lycée Lesage
 
 Les polys de cours, TD, TP et corrigés de l'année sont [ici](https://plescornet-drive.mytoutatice.cloud/public?sharecode=t2PpAK7M7t5f).
+
+### MP2I du Lycée Champollion
+
+Toutes les ressources de l'année (supports de cours, sujets de TP, de TD, etc.) sont [ici](https://membres-ljk.imag.fr/Pierre.Karpman/CPGE/2025/) ; une petite sélection
+est proposée ci-dessous.
+
+#### Sujet de devoir maison
+- [Preuve de correction d'un algorithme de PGCD binaire](Champo/mp2i_dm4.pdf)
+  ([corrigé](Champo/mp2i_dm4_cor.pdf)) ([version Why3 du corrigé](Champo/bgcd.ml))
+
+#### Sujets de TP
+- [Calcul de logarithme discret](Champo/mp2i_tp7.pdf) (C, exponentiation rapide,
+  tri par base, recherche dichotomique, paradigme « rencontre au milieu »)
+- [Calcul efficace d'un nombre de lapins modulo un nombre premier](Champo/mp2i_tp16.pdf)
+  (OCaml, flottants, exponentiation rapide)
+- [Tableaux dynamiques purement fonctionnels](Champo/mp2i_tp19.pdf)
+  (OCaml, structures de données, arbres)
+- [Détection de cycle dans des graphes fonctionnels](Champo/mp2i_tp23.pdf)
+  (C, algorithme à base de pile)
+- [Résolution de 3-SAT par recherche exhaustive](Champo/mp2i_tp28.pdf)
+  (C, recherche exhaustive, *bitslicing*)
