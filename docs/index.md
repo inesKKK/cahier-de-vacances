@@ -59,7 +59,7 @@ la majorité des corrigés. Quelques exemples de TP qui peuvent être intéressa
 * celui sur l'algorithme de Quine (en OCaml), [ici](jbb/quine/squelette.zip) (les graphes donnés en exemple peuvent aussi servir pour le 
 TP sur DPLL).
 
-### MP2I Fénelon Sainte-Marie
+### MP2I Fénelon Sainte-Marie, année 2021-2022
 
 [Site avec cours, TD, TP, DS](https://mp2i-fsm.github.io)
 
