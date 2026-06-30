@@ -1,7 +1,7 @@
 ## Cahier de vacances ... en route vers la MPI(*) - été 2025
 
 Cette liste d'énoncés est proposée par plusieurs enseignants
-d'informatique de diverses MP2I 2021-2022, 2022-2023, 2023-2024 et 2024-2025.
+d'informatique de diverses MP2I 2021-2022, 2022-2023, 2023-2024, 2024-2025 et 2025-2026.
 
 
 
@@ -150,3 +150,6 @@ est proposée ci-dessous.
   (C, algorithme à base de pile)
 - [Résolution de 3-SAT par recherche exhaustive](Champo/mp2i_tp28.pdf)
   (C, recherche exhaustive, *bitslicing*)
+=======
+Les polys de cours, TD, TP et corrigés de l'année sont [ici](https://plescornet-drive.mytoutatice.cloud/public?sharecode=fTP0zuH6NBSv). Il y a aussi un [DS](Lesage/ds6_etudiant.pdf) avec un exercice de manipulation de formules sous forme normale conjonctive, avec la résolution gloutonne de la satisfaisabilité de formules d'Horn.
+
