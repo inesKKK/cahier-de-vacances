@@ -128,7 +128,7 @@ Deux TP sur le programme de 2e année (IA)
 
 ### MP2I du Lycée Lesage
 
-Les polys de cours, TD, TP et corrigés de l'année sont [ici](https://plescornet-drive.mytoutatice.cloud/public?sharecode=t2PpAK7M7t5f).
+Les polys de cours, TD, TP et corrigés de l'année sont [ici](https://plescornet-drive.mytoutatice.cloud/public?sharecode=t2aGJ0lQUzA0).
 
 ### MP2I du Lycée Champollion
 
